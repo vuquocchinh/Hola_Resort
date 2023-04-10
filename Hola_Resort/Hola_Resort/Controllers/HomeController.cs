@@ -7,6 +7,7 @@ using System.Web.Mvc;
 namespace Hola_Resort.Controllers
 {
     public class HomeController : Controller
+
     {
         public ActionResult Index()
         {
