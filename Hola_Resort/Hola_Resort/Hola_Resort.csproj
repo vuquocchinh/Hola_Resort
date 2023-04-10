@@ -261,31 +261,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\js\main.js" />
-    <Content Include="Scripts\lib\animate\animate.css" />
-    <Content Include="Scripts\lib\animate\animate.min.css" />
-    <Content Include="Scripts\lib\counterup\counterup.min.js" />
-    <Content Include="Scripts\lib\easing\easing.js" />
-    <Content Include="Scripts\lib\easing\easing.min.js" />
-    <Content Include="Scripts\lib\owlcarousel\assets\ajax-loader.gif" />
-    <Content Include="Scripts\lib\owlcarousel\assets\owl.carousel.css" />
-    <Content Include="Scripts\lib\owlcarousel\assets\owl.carousel.min.css" />
-    <Content Include="Scripts\lib\owlcarousel\assets\owl.theme.default.css" />
-    <Content Include="Scripts\lib\owlcarousel\assets\owl.theme.default.min.css" />
-    <Content Include="Scripts\lib\owlcarousel\assets\owl.theme.green.css" />
-    <Content Include="Scripts\lib\owlcarousel\assets\owl.theme.green.min.css" />
-    <Content Include="Scripts\lib\owlcarousel\assets\owl.video.play.png" />
-    <Content Include="Scripts\lib\owlcarousel\owl.carousel.js" />
-    <Content Include="Scripts\lib\owlcarousel\owl.carousel.min.js" />
-    <Content Include="Scripts\lib\tempusdominus\css\tempusdominus-bootstrap-4.css" />
-    <Content Include="Scripts\lib\tempusdominus\css\tempusdominus-bootstrap-4.min.css" />
-    <Content Include="Scripts\lib\tempusdominus\js\moment-timezone.min.js" />
-    <Content Include="Scripts\lib\tempusdominus\js\moment.min.js" />
-    <Content Include="Scripts\lib\tempusdominus\js\tempusdominus-bootstrap-4.js" />
-    <Content Include="Scripts\lib\tempusdominus\js\tempusdominus-bootstrap-4.min.js" />
-    <Content Include="Scripts\lib\waypoints\waypoints.min.js" />
-    <Content Include="Scripts\lib\wow\wow.js" />
-    <Content Include="Scripts\lib\wow\wow.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -301,8 +276,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\lib\owlcarousel\LICENSE" />
-    <Content Include="Scripts\lib\waypoints\links.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
