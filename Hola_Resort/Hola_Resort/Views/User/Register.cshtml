@@ -1,8 +1,10 @@
 ﻿@model Hola_Resort.ViewModel.VMregister
 
-@{
-    Layout = null;
-}
+    
+    @{
+        ViewBag.Title = "Register";
+        Layout = null;
+    }
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -11,8 +13,7 @@
 </head>
 
 
-<section class="vh-100 bg-image"
-         style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+<section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -21,48 +22,77 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                            <form>
+                            @using (Html.BeginForm("Register", "User", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
 
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example1cg">Your Name</label>
+                                    @Html.LabelFor(model => model.FullName, new { @class = "form-label" })
+                                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control form-control-lg", id = "form3Example1cg" })
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                </div>
+
+
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(model => model.Email, "Email", new { @class = "form-label" })
+
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-lg", id = "form3Example3cg" })
+
+
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example3cg">Your Email</label>
+                                    @Html.LabelFor(model => model.Password, new { @class = "form-label" })
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-lg", id = "form3Example4cg" })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example4cg">Password</label>
+                                    @Html.LabelFor(model => model.ConfirmPassword, new { @class = "form-label" })
+
+                                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control form-control-lg", id = "form3Example4cdg" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "form-label" })
+
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control form-control-lg", id = "form3Example4cdg" })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                    @Html.LabelFor(model => model.Address, new { @class = "form-label" })
+
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control form-control-lg", id = "form3Example4cdg" })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(model => model.Gender, new { @class = "form-label" })
+
+                                    @Html.DropDownListFor(model => model.Gender, new SelectList(new List<SelectListItem>
+                                    {
+                                        new SelectListItem { Text = "Male", Value = "M" },
+                                        new SelectListItem { Text = "Female", Value = "F" }
+                                    }, "Value", "Text"), new { @class = "form-control form-control-lg", id = "form3Example2cg" })
+                                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                                 </div>
 
-                                <div class="form-check d-flex justify-content-center mb-5">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                                    <label class="form-check-label" for="form2Example3g">
-                                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                                    </label>
-                                </div>
+
+
+
+
 
                                 <div class="d-flex justify-content-center">
-                                    <button type="button"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
                                         Register
                                     </button>
                                 </div>
 
                                 <p class="text-center text-muted mt-5 mb-0">
-                                    Have already an account? <a href="#!"
-                                                                class="fw-bold text-body"><u>Login here</u></a>
+                                    Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a>
                                 </p>
-
-                            </form>
+                            }
 
                         </div>
                     </div>
@@ -71,6 +101,7 @@
         </div>
     </div>
 </section>
+
 
 <style>
     .gradient-custom-3 {
