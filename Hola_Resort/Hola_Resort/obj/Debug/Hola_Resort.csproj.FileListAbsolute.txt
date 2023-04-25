@@ -83,3 +83,13 @@ D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\obj\D
 D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\obj\Debug\Hola_Resort.csproj.CopyComplete
 D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\obj\Debug\Hola_Resort.dll
 D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\obj\Debug\Hola_Resort.pdb
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\BCrypt.Net-Next.dll
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\System.Buffers.dll
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\System.Memory.dll
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\System.Numerics.Vectors.dll
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\BCrypt.Net-Next.xml
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\System.Buffers.xml
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\System.Memory.xml
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\System.Numerics.Vectors.xml
+D:\Worskspace\Hutech\ĐACS\Hola_Resort\Hola_Resort\Hola_Resort\Hola_Resort\bin\System.Runtime.CompilerServices.Unsafe.xml

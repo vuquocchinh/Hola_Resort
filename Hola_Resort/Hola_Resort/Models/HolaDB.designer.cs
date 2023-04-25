@@ -57,9 +57,17 @@ namespace Hola_Resort.Models
     partial void InsertService(Service instance);
     partial void UpdateService(Service instance);
     partial void DeleteService(Service instance);
-    #endregion
-		
-		public HolaDBDataContext(string connection) : 
+        #endregion
+        public HolaDBDataContext() :
+    base("Data Source=DESKTOP-LV7909K;Initial Catalog=Hola;Integrated Security=True",
+        mappingSource)
+        {
+            OnCreated();
+        }
+
+
+
+        public HolaDBDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -70,21 +78,14 @@ namespace Hola_Resort.Models
 		{
 			OnCreated();
 		}
-
-		public HolaDBDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) :
+		
+		public HolaDBDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
-        public HolaDBDataContext() :
-    base("Data Source=DESKTOP-LV7909K;Initial Catalog=Hola;Integrated Security=True",
-        mappingSource)
-        {
-            OnCreated();
-        }
-
-
-        public HolaDBDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		
+		public HolaDBDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -171,7 +172,7 @@ namespace Hola_Resort.Models
 		
 		private string _BookingId;
 		
-		private string _CustomerId;
+		private int _CustomerId;
 		
 		private string _RoomId;
 		
@@ -203,7 +204,7 @@ namespace Hola_Resort.Models
     partial void OnCreated();
     partial void OnBookingIdChanging(string value);
     partial void OnBookingIdChanged();
-    partial void OnCustomerIdChanging(string value);
+    partial void OnCustomerIdChanging(int value);
     partial void OnCustomerIdChanged();
     partial void OnRoomIdChanging(string value);
     partial void OnRoomIdChanged();
@@ -251,8 +252,8 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CustomerId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int CustomerId
 		{
 			get
 			{
@@ -467,7 +468,7 @@ namespace Hola_Resort.Models
 					}
 					else
 					{
-						this._CustomerId = default(string);
+						this._CustomerId = default(int);
 					}
 					this.SendPropertyChanged("Customer");
 				}
@@ -615,7 +616,7 @@ namespace Hola_Resort.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _CustomerId;
+		private int _CustomerId;
 		
 		private string _FullName;
 		
@@ -641,7 +642,7 @@ namespace Hola_Resort.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnCustomerIdChanging(string value);
+    partial void OnCustomerIdChanging(int value);
     partial void OnCustomerIdChanged();
     partial void OnFullNameChanging(string value);
     partial void OnFullNameChanged();
@@ -668,8 +669,8 @@ namespace Hola_Resort.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string CustomerId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CustomerId
 		{
 			get
 			{
@@ -1467,7 +1468,7 @@ namespace Hola_Resort.Models
 		
 		private string _ReviewId;
 		
-		private string _CustomerId;
+		private int _CustomerId;
 		
 		private string _RoomId;
 		
@@ -1487,7 +1488,7 @@ namespace Hola_Resort.Models
     partial void OnCreated();
     partial void OnReviewIdChanging(string value);
     partial void OnReviewIdChanged();
-    partial void OnCustomerIdChanging(string value);
+    partial void OnCustomerIdChanging(int value);
     partial void OnCustomerIdChanged();
     partial void OnRoomIdChanging(string value);
     partial void OnRoomIdChanged();
@@ -1526,8 +1527,8 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CustomerId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int CustomerId
 		{
 			get
 			{
@@ -1661,7 +1662,7 @@ namespace Hola_Resort.Models
 					}
 					else
 					{
-						this._CustomerId = default(string);
+						this._CustomerId = default(int);
 					}
 					this.SendPropertyChanged("Customer");
 				}

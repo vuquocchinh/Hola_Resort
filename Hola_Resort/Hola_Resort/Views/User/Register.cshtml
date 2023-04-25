@@ -31,7 +31,11 @@
                                     @Html.TextBoxFor(model => model.FullName, new { @class = "form-control form-control-lg", id = "form3Example1cg" })
                                     @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
                                 </div>
-
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(model => model.Username, new { @class = "form-label" })
+                                    @Html.TextBoxFor(model => model.Username, new { @class = "form-control form-control-lg", id = "form3Example1cg" })
+                                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                </div>
 
                                 <div class="form-outline mb-4">
                                     @Html.LabelFor(model => model.Email, "Email", new { @class = "form-label" })
@@ -60,6 +64,34 @@
                                     @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control form-control-lg", id = "form3Example4cdg" })
                                     @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(model => model.DayofBirt, "Date Of Birth", new { @class = "form-label" })
+                                    <br />
+                                    <select class="form-select form-select-lg" id="day" name="day">
+                                        <option value="">Ngày</option>
+                                        @for (int i = 1; i <= 31; i++)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                    <select class="form-select form-select-lg" id="month" name="month">
+                                        <option value="">Tháng</option>
+                                        @for (int i = 1; i <= 12; i++)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                    <select class="form-select form-select-lg" id="year" name="year">
+                                        <option value="">Năm</option>
+                                        @for (int i = DateTime.Now.Year; i >= 1900; i--)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.DayofBirt, "", new { @class = "text-danger" })
+                                </div>
+
 
                                 <div class="form-outline mb-4">
                                     @Html.LabelFor(model => model.Address, new { @class = "form-label" })
@@ -90,7 +122,7 @@
                                 </div>
 
                                 <p class="text-center text-muted mt-5 mb-0">
-                                    Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a>
+                                    Have already an account? <a href="~/" class="fw-bold text-body"><u>Login here</u></a>
                                 </p>
                             }
 
