@@ -1,4 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Hola" Class="HolaDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.AdminAccounts" Member="AdminAccounts">
+    <Type Name="AdminAccount">
+      <Column Name="AdminId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.Booking" Member="Bookings">
     <Type Name="Booking">
       <Column Name="BookingId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -9,7 +18,7 @@
       <Column Name="NumberOfRooms" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ServiceId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="PaymentId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Association Name="Booking_Invoice" Member="Invoices" ThisKey="BookingId" OtherKey="BookingId" Type="Invoice" />
       <Association Name="Customer_Booking" Member="Customer" ThisKey="CustomerId" OtherKey="CustomerId" Type="Customer" IsForeignKey="true" />
       <Association Name="Payment_Booking" Member="Payment" ThisKey="PaymentId" OtherKey="PaymentId" Type="Payment" IsForeignKey="true" />
@@ -36,7 +45,7 @@
     <Type Name="Discount">
       <Column Name="DiscountId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DiscountName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Percentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Percentage" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="Discount_Invoice" Member="Invoices" ThisKey="DiscountId" OtherKey="DiscountId" Type="Invoice" />
@@ -46,18 +55,11 @@
     <Type Name="Invoice">
       <Column Name="InvoiceId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="BookingId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Total" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="DiscountId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PaymentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="Booking_Invoice" Member="Booking" ThisKey="BookingId" OtherKey="BookingId" Type="Booking" IsForeignKey="true" />
       <Association Name="Discount_Invoice" Member="Discount" ThisKey="DiscountId" OtherKey="DiscountId" Type="Discount" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Payment" Member="Payments">
-    <Type Name="Payment">
-      <Column Name="PaymentId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PaymentMethod" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Payment_Booking" Member="Bookings" ThisKey="PaymentId" OtherKey="PaymentId" Type="Booking" />
     </Type>
   </Table>
   <Table Name="dbo.Review" Member="Reviews">
@@ -72,12 +74,19 @@
       <Association Name="Room_Review" Member="Room" ThisKey="RoomId" OtherKey="RoomId" Type="Room" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Payment" Member="Payments">
+    <Type Name="Payment">
+      <Column Name="PaymentId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PaymentMethod" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Payment_Booking" Member="Bookings" ThisKey="PaymentId" OtherKey="PaymentId" Type="Booking" />
+    </Type>
+  </Table>
   <Table Name="dbo.Room" Member="Rooms">
     <Type Name="Room">
       <Column Name="RoomId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="RoomNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="RoomTypeId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="RoomStatus" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="RoomStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
       <Association Name="Room_Booking" Member="Bookings" ThisKey="RoomId" OtherKey="RoomId" Type="Booking" />
       <Association Name="Room_Review" Member="Reviews" ThisKey="RoomId" OtherKey="RoomId" Type="Review" />
@@ -90,8 +99,7 @@
       <Column Name="Image" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="RoomTypeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Capacity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PriceDay" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
-      <Column Name="PriceHour" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceDay" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Association Name="RoomType_Room" Member="Rooms" ThisKey="RoomTypeId" OtherKey="RoomTypeId" Type="Room" />
     </Type>
   </Table>
@@ -99,8 +107,7 @@
     <Type Name="Service">
       <Column Name="ServiceId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ServiceName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceService" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Association Name="Service_Booking" Member="Bookings" ThisKey="ServiceId" OtherKey="ServiceId" Type="Booking" />
     </Type>
   </Table>

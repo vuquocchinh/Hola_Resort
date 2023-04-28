@@ -1,0 +1,58 @@
+﻿@model Hola_Resort.Models.Room
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Detail Room</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomId)
+        </dd>
+        <dt>
+            Số phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomNumber)
+        </dd>
+
+        <dt>
+            Mã loại phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomTypeId)
+        </dd>
+
+        <dt>
+           Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomStatus)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoomId }) |
+    @Html.ActionLink("Back to List", "ListPhong")
+</p>
