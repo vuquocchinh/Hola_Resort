@@ -1,0 +1,59 @@
+﻿@using PagedList.Mvc;
+@model IEnumerable<Hola_Resort.Models.RoomType>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center">Loại Phòng </h2>
+<head>
+    <link href="~/Content/css/all.css" rel="stylesheet" />
+</head>
+<tbody style="background-color:white">
+    <div class="row justify-content-center">
+
+        @foreach (var item in Model)
+        {
+            <section style="padding-left: 400px; margin-bottom: 50px; " class="">
+                <div class=" py-3 ">
+                    <div class="row d-inline-block">
+                        <a href="~/Room/Room/@item.RoomTypeId" class="col text-decoration-none">
+                            <div class="col">
+                                <div class="card text-black" style="height:270px; width:1200px  ">
+                                    <div class="wrrapper" style="padding: 10px 0px 10px 10px; font-size:130%">
+                                        <div style="display: inline-block; float: left; width: 40%; ">
+                                            <img style="height: 250px; width: 390px; " src="@item.Image"
+                                                 class="card-img-top" alt="@item.RoomTypeName" />
+                                        </div>
+                                        <div style="display: inline-block; float: right; width: 60%; " class="card-body">
+                                            <div class="text-center ">
+                                                <h5 class="card-title">@item.RoomTypeName</h5>
+                                            </div>
+                                            <div>
+                                                <div>Số người: @item.Capacity            </div>
+                                                <div>Số giường: @item.Bed</div>
+                                                <div>Giá: @item.PriceDay</div>
+                                                <div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <a href="/Room/Room/@item.RoomTypeId">
+                                            <button class="btn btn-outline-info " type="button">
+                                                Xem chi tiết các phòng
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        }
+    </div>
+
+</html>

@@ -1,0 +1,68 @@
+﻿@model Hola_Resort.Models.Room 
+@{
+    ViewBag.Title = "Chi tiết phòng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Content/css/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <h1 style="font-weight:bold !important; font-size:40px;color:black; padding-bottom:50px; text-align:center;">CHI TIẾT PHÒNG</h1>
+                <div class="col-md-6">
+                    <img class="card-img-top mb-5 mb-md-0" src="@Model.RoomType.Image" alt="..." />
+                </div>
+                <div class="col-6">
+                    <div style="font-size:30px; margin-top:-30px" >Phòng: @Model.RoomNumber</div>
+                    <div class="fs-5 mb-5" style="padding-top: 50px">
+                        <span>Loại Phòng: @Model.RoomType.RoomTypeName <br /></span>
+                        <span>Số giường: @Model.RoomType.Bed  <br /></span>
+                        <span>Số người: @Model.RoomType.Capacity<br /></span>
+
+                        @if (Model.RoomStatus == true)
+                        {<p style="display: inline-block; "> Trạng thái: Còn phòng</p>}
+                        else
+                        { <p style="display: inline-block; color:red "><strong>Trạng thái: Hết phòng</strong></p>}
+                    </div>
+                    <div style="font-size:30px;" class="small mb-1">@Model.RoomType.PriceDay VNĐ</div>
+                    <div class="d-flex">
+                        @if (@Model.RoomStatus == true)
+                        {
+                            <a href="/Booking/Booking/@Model.RoomId">
+                                <button class="btn btn-outline-info " type="button">
+                                    Đặt phòng ngay
+                                </button>
+                            </a>
+                        }
+
+                        else
+                        {
+                            <button type="button" disabled class="btn btn-outline-danger " type="text">
+                                Đã được đặt
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        body {
+            background-image: none !important;
+            background-color: white !important;
+        }
+
+        .bg-opacity-75 {
+            --bs-bg-opacity: 0.90 !important;
+        }
+    </style>
+</body>
+
+</html>

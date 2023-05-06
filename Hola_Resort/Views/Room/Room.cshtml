@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Hola_Resort.Models.Room>
+
+@{
+    ViewBag.Title = "Room";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center">Danh sách phòng </h2>
+
+<div class="row justify-content-center">
+
+    @foreach (var item in Model)
+    {
+        <section style=" margin-bottom: 50px; width: 40%; " class="">
+            <div class="container py-3">
+                <div class="row d-inline-block">
+                    <a href="~/Room/Details/@item.RoomId" >
+                        <div class="col-3" style="padding-left:150px">
+                            <div class="card text-black" style="height: 600px; width: 450px; ">
+                                <div style="">
+                                    <div>
+                                        <img style=" padding: 20px 20px 0px 20px " src="@item.RoomType.Image"
+                                             class="card-img-top" alt="@item.RoomType.RoomTypeName" />
+                                    </div>
+                                    <div style=" padding-top: 15%;; font-size: 120% " class="card-body">
+
+                                        <div>
+                                            <div>
+                                                <p style="display: inline-block">Số phòng: @item.RoomNumber</p>
+                                                <p style="display: inline-block; float:right" >Số giường: @item.RoomType.Bed</p>
+                                                
+                                            </div>
+                                            <div>
+                                                <p style="display: inline-block">Loại phòng: @item.Description</p>
+                                                <p style="display: inline-block; float:right">Số người: @item.RoomType.Capacity</p>
+                                                
+                                            </div>
+                                                
+                                                
+                                            <div>
+                                                @if (@item.RoomStatus == true)
+                                                {<p style="display: inline-block; "> Trạng thái: Còn phòng</p>}
+                                                else
+                                                { <p style="display: inline-block; color:red "><strong>Trạng thái: Hết phòng</strong></p>}
+                                                <p style="display: inline-block; float:right">Giá thuê: @item.RoomType.PriceDay</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div style="padding-top:25px; text-align:center">
+                                            @if (@item.RoomStatus == true)
+                                            {
+                                                <a href="/Booking/Booking/@item.RoomId">
+                                                    <button class="btn btn-outline-info " type="button">
+                                                        Đặt phòng ngay
+                                                    </button>
+                                                </a>
+                                            }
+
+                                            else
+                                            {
+                                                <button type="button" disabled class="btn btn-outline-danger " type="text">
+                                                    Đã được đặt
+                                                </button>
+                                            }
+
+                                        </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    }
+</div>
