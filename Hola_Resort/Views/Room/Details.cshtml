@@ -10,11 +10,19 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/css/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <script src="~/Content/css/bootstrap/dist/js/bootstrap.js"></script>
+    <style>
+        .BG {
+            background-image: url('../../content/img/bg.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
-    <section class="py-1">
+    <section class="BG py-1">
         <div class="container px-4 px-lg-5 my-5">
-            <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="row gx-4 gx-lg-5 align-items-center" style="background-color:aliceblue; padding: 20PX 0 20px">
                 <h1 style="font-weight:bold ; font-size:40px;color:black; padding-bottom:50px; text-align:center;">CHI TIẾT PHÒNG</h1>
                 <div class="col-md-6">
                     <img class="card-img-top mb-5 mb-md-0" src="@Model.RoomType.Image" alt="..." />

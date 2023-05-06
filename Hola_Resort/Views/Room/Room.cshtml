@@ -4,10 +4,17 @@
     ViewBag.Title = "Room";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .BG {
+        background-image: url('../../content/img/bg.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        opacity: 0.8;
+    }
+</style>
 <h2 style="text-align: center">Danh sách phòng </h2>
 
-<div class="row justify-content-center">
+<div class="BG row justify-content-center">
 
     @foreach (var item in Model)
     {

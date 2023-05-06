@@ -6,13 +6,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 style="text-align:center">Loại Phòng </h2>
 <head>
     <link href="~/Content/css/all.css" rel="stylesheet" />
+    <style>
+        .BG {
+            background-image: url('../../content/img/bg.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            opacity: 0.8;
+        }
+    </style>
 </head>
-<tbody style="background-color:white">
-    <div class="row justify-content-center">
-
+<tbody>
+    <div class=" BG row justify-content-center">
+        <h2 style="text-align:center; color:aqua">Loại Phòng </h2>
         @foreach (var item in Model)
         {
             <section style="padding-left: 250px; margin-bottom: 50px; " class="">
