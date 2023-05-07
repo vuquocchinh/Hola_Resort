@@ -19,7 +19,7 @@
 </head>
 <tbody>
     <div class=" BG row justify-content-center">
-        <h2 style="text-align:center; color:aqua">Loại Phòng </h2>
+        <h2 style="text-align:center; color:aqua; padding-top:50px">Our Rooms </h2>
         @foreach (var item in Model)
         {
             <section style="padding-left: 250px; margin-bottom: 50px; " class="">
@@ -38,9 +38,9 @@
                                                 <h5 class="card-title">@item.RoomTypeName</h5>
                                             </div>
                                             <div>
-                                                <div>Số người: @item.Capacity            </div>
-                                                <div>Số giường: @item.Bed</div>
-                                                <div>Giá: @item.PriceDay</div>
+                                                <div>Capacity: @item.Capacity            </div>
+                                                <div>Bed: @item.Bed</div>
+                                                <div>Price: @item.PriceDay VND</div>
                                                 <div>
 
                                                 </div>
@@ -49,7 +49,7 @@
                                         </div>
                                         <a href="/Room/Room/@item.RoomTypeId">
                                             <button class="btn btn-outline-info " type="button">
-                                                Xem chi tiết các phòng
+                                                Choose this room
                                             </button>
                                         </a>
                                     </div>

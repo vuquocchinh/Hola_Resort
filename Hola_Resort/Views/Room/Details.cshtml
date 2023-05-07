@@ -23,38 +23,36 @@
     <section class="BG py-1">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center" style="background-color:aliceblue; padding: 20PX 0 20px">
-                <h1 style="font-weight:bold ; font-size:40px;color:black; padding-bottom:50px; text-align:center;">CHI TIẾT PHÒNG</h1>
+                <h1 style="font-weight:bold ; font-size:40px;color:black; padding-bottom:33px; text-align:center;">Room Details</h1>
                 <div class="col-md-6">
                     <img class="card-img-top mb-5 mb-md-0" src="@Model.RoomType.Image" alt="..." />
                 </div>
                 <div class="col-6">
-                    <div style="font-size:30px; margin-top:-30px" >Phòng: @Model.RoomNumber</div>
+                    <div style="font-size:30px; margin-top:-30px" >Room: @Model.RoomNumber</div>
                     <div class="fs-5 mb-5" style="padding-top: 50px">
-                        <span>Loại Phòng: @Model.RoomType.RoomTypeName <br /></span>
-                        <span>Số giường: @Model.RoomType.Bed  <br /></span>
-                        <span>Số người: @Model.RoomType.Capacity<br /></span>
+                        <span>Kind of room: @Model.RoomType.RoomTypeName <br /></span>
+                        <span>Bed: @Model.RoomType.Bed  <br /></span>
+                        <span>Capcity: @Model.RoomType.Capacity<br /></span>
 
                         @if (Model.RoomStatus == true)
-                        {<p style="display: inline-block; "> Trạng thái: Còn phòng</p>}
+                        {<p style="display: inline-block; ">Status: Room available</p>}
                         else
-                        { <p style="display: inline-block; color:red "><strong>Trạng thái: Hết phòng</strong></p>}
+                        { <p style="display: inline-block; color:red "><strong>Status: Out of room</strong></p>}
                     </div>
-                    <div style="font-size:30px;" class="small mb-1">@Model.RoomType.PriceDay VNĐ</div>
+                    <div style="font-size:30px;" class="small mb-1">@Model.RoomType.PriceDay VND</div>
                     <div class="d-flex">
                         @if (@Model.RoomStatus == true)
                         {
                             <a href="/Booking/Booking/@Model.RoomId">
                                 <button class="btn btn-outline-info " type="button">
-                                    Đặt phòng ngay
+                                    Booking
                                 </button>
                             </a>
-                        }
-
-                        else
+                        }else
                         {
                             <button type="button" disabled class="btn btn-outline-danger " type="text">
-                                Đã được đặt
-                            </button>
+                                Out of room
+                            </button>           
                         }
                     </div>
                 </div>

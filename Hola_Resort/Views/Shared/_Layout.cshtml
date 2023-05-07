@@ -77,7 +77,7 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto py-0">
+                            <div class="navbar-nav mr-auto py-0" style="width:100%">
                                 <a href="~/Home/Index" class="nav-item nav-link active">Home</a>
                                 <a href="~/Home/About" class="nav-item nav-link">About</a>
                                 <a href="~/Home/Contact" class="nav-item nav-link">Contact</a>
@@ -85,12 +85,13 @@
                                 <a href="" class="nav-item nav-link">Booking</a>
                                 @if (Session["CustomerInfo"] != null)
                                 {
-                                    <a href="@Url.Action("Logout", "User")" class="nav-item nav-link">Logout</a>
+                                    <a href="@Url.Action("Logout", "User")" class="nav-item nav-link" style="padding-left: 550px">Logout</a>
                                 }
                                 else
                                 {
-                                    <a href="~/User/Login" class="nav-item nav-link">Login</a>
+                                    <a href="~/User/Login" class="nav-item nav-link " style="padding-left: 550px">Login</a>
                                 }
+                                <a href="" class="nav-item nav-link">Register</a>
                             </div>
 
                         </div>
@@ -102,7 +103,7 @@
         @RenderBody()
       
         <!-- Footer Start -->
-        <div class=" bg-dark text-light footer wow fadeIn" style="margin-top: 50px;" data-wow-delay="0.1s" >
+        <div class=" bg-dark text-light footer wow fadeIn" style="margin-top: 0px;" data-wow-delay="0.1s" >
             <div class="container pb-5">
                 <div class="row g-5">
                     <div class="col-md-6 col-lg-4">
