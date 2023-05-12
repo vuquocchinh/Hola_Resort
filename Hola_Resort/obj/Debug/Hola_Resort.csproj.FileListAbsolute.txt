@@ -390,3 +390,7 @@ C:\Users\qtri1\OneDrive\Máy tính\DACS\Hola\Hola_Resort\obj\Debug\Hola_Resort.c
 C:\Users\qtri1\OneDrive\Máy tính\DACS\Hola\Hola_Resort\obj\Debug\Hola_Resort.csproj.CopyComplete
 C:\Users\qtri1\OneDrive\Máy tính\DACS\Hola\Hola_Resort\obj\Debug\Hola_Resort.dll
 C:\Users\qtri1\OneDrive\Máy tính\DACS\Hola\Hola_Resort\obj\Debug\Hola_Resort.pdb
+D:\Worskspace\hola\Hola_Resort\Hola_Resort\obj\Debug\Hola_Resort.csproj.AssemblyReference.cache
+D:\Worskspace\hola\Hola_Resort\Hola_Resort\obj\Debug\Hola_Resort.csproj.CoreCompileInputs.cache
+D:\Worskspace\hola\Hola_Resort\Hola_Resort\obj\Debug\Hola_Resort.dll
+D:\Worskspace\hola\Hola_Resort\Hola_Resort\obj\Debug\Hola_Resort.pdb
