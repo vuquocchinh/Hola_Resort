@@ -8,10 +8,10 @@ namespace Hola_Resort.ViewModel
 {
     public class VMlogin
     {
-        [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]
+        [Required(ErrorMessage = "Please enter your username!")]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
+        [Required(ErrorMessage = "Please enter your password!")]
         public string Password { get; set; }
     }
 }

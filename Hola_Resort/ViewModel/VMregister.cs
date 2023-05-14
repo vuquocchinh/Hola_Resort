@@ -12,35 +12,35 @@ namespace Hola_Resort.ViewModel
         [Key]
         public string CustomerId { get; set; }
 
-        [Required(ErrorMessage = "Họ tên không được bỏ trống.")]
+        [Required(ErrorMessage = "Name cannot be left blank.")]
         public string FullName { get; set; }
 
-        [Required(ErrorMessage = "Email không được bỏ trống.")]
-        [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
+        [Required(ErrorMessage = "email cannot be left blank.")]
+        [EmailAddress(ErrorMessage = "Invalid email.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Số điện thoại không được bỏ trống.")]
-        [RegularExpression(@"^0\d{9,10}$", ErrorMessage = "Số điện thoại không hợp lệ.")]
+        [Required(ErrorMessage = "Phone number cannot be empty!")]
+        [RegularExpression(@"^0\d{9,10}$", ErrorMessage = "Invalid phone number!")]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Địa chỉ không được bỏ trống.")]
+        [Required(ErrorMessage = "Address cannot be left empty!")]
         public string Address { get; set; }
 
-        public DateTime? DayofBirt { get; set; }
+        public DateTime? DateofBirth { get; set; }
 
         public string Gender { get; set; }
 
-        [Required(ErrorMessage = "Tên đăng nhập không được bỏ trống.")]
-        [StringLength(30, MinimumLength = 6, ErrorMessage = "Tên đăng nhập phải có độ dài từ 6 đến 30 ký tự.")]
+        [Required(ErrorMessage = "Username cannot be left blank!")]
+        [StringLength(30, MinimumLength = 6, ErrorMessage = "Username must be between 6 and 30 characters long!")]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Mật khẩu không được bỏ trống.")]
-        [StringLength(30, MinimumLength = 6, ErrorMessage = "Mật khẩu phải có độ dài từ 6 đến 30 ký tự.")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,30}$", ErrorMessage = "Mật khẩu phải có ít nhất 1 ký tự viết hoa, 1 ký tự đặc biệt và 1 số.")]
+        [Required(ErrorMessage = "Password cannot be left blank!")]
+        [StringLength(30, MinimumLength = 6, ErrorMessage = "Password must be between 6 and 30 characters long!")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,30}$", ErrorMessage = "Password must contain at least 1 uppercase letter, 1 special character, and 1 number!")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Xác nhận mật khẩu không được bỏ trống.")]
-        [Compare("Password", ErrorMessage = "Xác nhận mật khẩu không trùng khớp.")]
+        [Required(ErrorMessage = "Confirm password cannot be left blank")]
+        [Compare("Password", ErrorMessage = "Confirm password does not match!")]
         public string ConfirmPassword { get; set; }
     }
 }

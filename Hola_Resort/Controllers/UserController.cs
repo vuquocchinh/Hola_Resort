@@ -41,7 +41,7 @@ namespace Hola_Resort.Controllers
                 customer.Email = model.Email;
                 customer.PhoneNumber = model.PhoneNumber;
                 customer.Address = model.Address;
-                customer.DayofBirt = model.DayofBirt;
+                customer.DateofBirth = model.DateofBirth;
                 customer.Gender = model.Gender;
                 customer.Username = model.Username;
                 string salt = BCrypt.Net.BCrypt.GenerateSalt();
@@ -81,7 +81,9 @@ namespace Hola_Resort.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng.");
+                ModelState.AddModelError("", "Incorrect username or password!");
+                TempData["Error"] = "Incorrect username or password!";
+
                 return View(model);
             }
             return View(model);

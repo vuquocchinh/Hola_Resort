@@ -1,128 +1,128 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 15.125" name="HolaDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.5, 12" name="HolaDB">
   <DataContextMoniker Name="/HolaDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="e48faa1a-1f0a-4ecc-8648-a82b8fc7fbd1" absoluteBounds="6.75, 4, 2, 1.7708968098958326">
+    <classShape Id="f08b0481-f127-47ae-ba0b-5ab959e656a0" absoluteBounds="6.75, 8.375, 2, 1.7708968098958326">
       <DataClassMoniker Name="/HolaDBDataContext/AdminAccount" />
       <nestedChildShapes>
-        <elementListCompartment Id="1c3cca52-68b6-4b5b-833b-fda2a1f0cdb4" absoluteBounds="6.765, 4.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="445ce4a3-a8db-486f-9bc1-0990e185551a" absoluteBounds="6.765, 8.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ac927ec5-8949-4d0d-b15f-8426d12481e9" absoluteBounds="3.5, 0.75, 2, 2.5401025390625">
+    <classShape Id="ed6eb0a9-3b2d-474e-9b91-858cc2651929" absoluteBounds="6.5, 4.125, 2, 3.1170068359375005">
       <DataClassMoniker Name="/HolaDBDataContext/Booking" />
       <nestedChildShapes>
-        <elementListCompartment Id="f3b8aa12-040b-465d-ac41-7cca5e3ff53f" absoluteBounds="3.515, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fcd49520-0988-40b3-a4f1-176e62b033d3" absoluteBounds="6.515, 4.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a33e9d81-f71f-417d-84a5-d6628ccadb93" absoluteBounds="0.75, 3.75, 2, 2.5401025390624996">
+    <classShape Id="c514028b-1888-4af6-9c15-8aedd1c9a0a0" absoluteBounds="0.75, 4.375, 2, 2.5401025390625005">
       <DataClassMoniker Name="/HolaDBDataContext/Customer" />
       <nestedChildShapes>
-        <elementListCompartment Id="973628cc-d573-4c8d-8043-660b8da1da17" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6b5891cc-632f-48d2-a90c-8a12dcc8db12" absoluteBounds="0.765, 4.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="eabf9029-8128-4129-8bf3-e29e658242be" absoluteBounds="3.5, 7.5, 2, 1.7708968098958335">
+    <classShape Id="da11e80d-5e58-4e0f-8afa-b8bfe0e71f25" absoluteBounds="6.5, 0.75, 2, 1.7708968098958331">
       <DataClassMoniker Name="/HolaDBDataContext/Discount" />
       <nestedChildShapes>
-        <elementListCompartment Id="fd2fc1b5-8e64-4d62-8221-90c5598b348c" absoluteBounds="3.515, 7.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6d65aa8d-53d4-440d-8145-7e2eac048203" absoluteBounds="6.515, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="db1cd4a6-24cc-403d-9126-9cddf26a747b" absoluteBounds="6.25, 1.125, 2, 1.7708968098958331">
+    <classShape Id="e7e0d30d-45d8-4a2c-9b6d-e6b89c9fd371" absoluteBounds="9.25, 4.75, 2, 1.7708968098958326">
       <DataClassMoniker Name="/HolaDBDataContext/Invoice" />
       <nestedChildShapes>
-        <elementListCompartment Id="f79a8281-a24b-4aa9-817e-9ac13a23f45f" absoluteBounds="6.265, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e62272c0-cc1b-4c77-8095-2c78a4a6742b" absoluteBounds="9.265, 5.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a0c5b253-3d7c-4145-a537-ea5f8ed874b6" absoluteBounds="0.75, 1, 2, 1.1939925130208338">
+    <classShape Id="7d12881c-c568-415c-8399-fa44f6f00e3a" absoluteBounds="3.75, 2.625, 2, 1.1939925130208335">
       <DataClassMoniker Name="/HolaDBDataContext/Payment" />
       <nestedChildShapes>
-        <elementListCompartment Id="b9dbd5c1-c3d8-41f7-a688-84a9f6eb4bfa" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fa2c2f7e-e10e-41a2-9c00-5fbe88f3039a" absoluteBounds="3.765, 3.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c35b5055-916e-41fb-8257-19ef672d2fd2" absoluteBounds="3.5, 4, 2, 1.9631982421874996">
+    <classShape Id="eeef2a8b-76c2-4923-8292-bcf6bb1189e5" absoluteBounds="3.5, 4.625, 2, 1.9631982421875005">
       <DataClassMoniker Name="/HolaDBDataContext/Review" />
       <nestedChildShapes>
-        <elementListCompartment Id="b9d5789a-5735-4eb1-a02d-1193ea868e3d" absoluteBounds="3.515, 4.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ffe587c3-d9af-46d5-ab26-ea8b0d99e90b" absoluteBounds="3.515, 5.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="dfea3fa5-3c19-414a-9921-65c4a89f4dea" absoluteBounds="0.75, 10, 2, 1.7708968098958344">
+    <classShape Id="d9289abc-102b-4cc4-a376-0060fbe9d895" absoluteBounds="3.75, 9.75, 2, 1.7708968098958344">
       <DataClassMoniker Name="/HolaDBDataContext/Room" />
       <nestedChildShapes>
-        <elementListCompartment Id="27d43c78-a5bb-493a-a633-404a4065b323" absoluteBounds="0.765, 10.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f16550ac-c8fa-4d60-a185-c7c87f539a14" absoluteBounds="3.765, 10.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="937e0bc8-9b7f-4269-a260-44d6fcc77596" absoluteBounds="0.75, 7.875, 2, 1.3862939453125005">
-      <DataClassMoniker Name="/HolaDBDataContext/Service" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4bcade0a-e311-420d-b2f4-65b450acf8f6" absoluteBounds="0.765, 8.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.75 : 3.75); (3 : 3.375); (3 : 3.6651025390625); (3.163266155534 : 3.12794014619712 : JumpStart); (3.211733844466 : 2.96847647977944 : JumpEnd); (3.288266155534 : 2.71667732881431 : JumpStart); (3.336733844466 : 2.55721366239663 : JumpEnd); (3.5 : 2.02005126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HolaDBDataContext/Customer/Customer_Booking" />
-      <nodes>
-        <classShapeMoniker Id="a33e9d81-f71f-417d-84a5-d6628ccadb93" />
-        <classShapeMoniker Id="ac927ec5-8949-4d0d-b15f-8426d12481e9" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 2.01044840494792); (6.25 : 2.01044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HolaDBDataContext/Booking/Booking_Invoice" />
-      <nodes>
-        <classShapeMoniker Id="ac927ec5-8949-4d0d-b15f-8426d12481e9" />
-        <classShapeMoniker Id="db1cd4a6-24cc-403d-9126-9cddf26a747b" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 8.38544840494792); (6.46875 : 8.38544840494792); (6.46875 : 2.89589680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HolaDBDataContext/Discount/Discount_Invoice" />
-      <nodes>
-        <classShapeMoniker Id="eabf9029-8128-4129-8bf3-e29e658242be" />
-        <classShapeMoniker Id="db1cd4a6-24cc-403d-9126-9cddf26a747b" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.59699625651042); (3.5 : 1.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/HolaDBDataContext/Payment/Payment_Booking" />
-      <nodes>
-        <classShapeMoniker Id="a0c5b253-3d7c-4145-a537-ea5f8ed874b6" />
-        <classShapeMoniker Id="ac927ec5-8949-4d0d-b15f-8426d12481e9" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.98159912109375); (3.10416666666667 : 4.98159912109375 : JumpStart); (3.39583333333333 : 4.98159912109375 : JumpEnd); (3.5 : 4.98159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HolaDBDataContext/Customer/Customer_Review" />
-      <nodes>
-        <classShapeMoniker Id="a33e9d81-f71f-417d-84a5-d6628ccadb93" />
-        <classShapeMoniker Id="c35b5055-916e-41fb-8257-19ef672d2fd2" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.72139320537861 : 10); (3.3125 : 9.40889320537861); (3.3125 : 2.47480139778646); (3.5 : 2.47480139778646)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HolaDBDataContext/Room/Room_Booking" />
-      <nodes>
-        <classShapeMoniker Id="dfea3fa5-3c19-414a-9921-65c4a89f4dea" />
-        <classShapeMoniker Id="ac927ec5-8949-4d0d-b15f-8426d12481e9" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.031330251252); (3.125 : 9.656330251252); (3.125 : 5.50365068164062); (3.22916666666667 : 5.50365068164062 : JumpStart); (3.39583333333333 : 5.50365068164062 : JumpEnd); (3.5 : 5.50365068164062)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HolaDBDataContext/Room/Room_Review" />
-      <nodes>
-        <classShapeMoniker Id="dfea3fa5-3c19-414a-9921-65c4a89f4dea" />
-        <classShapeMoniker Id="c35b5055-916e-41fb-8257-19ef672d2fd2" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 7.9368490375601); (3.06607443490112 : 7.62077460265898 : JumpStart); (3.18392556509888 : 7.50292347246122 : JumpEnd); (3.1875 : 7.4993490375601); (3.1875 : 2.47480139778646); (3.27844905099783 : 2.47480139778646 : JumpStart); (3.4451157176645 : 2.47480139778646 : JumpEnd); (3.5 : 2.47480139778646)]" fixedFrom="NotFixed" fixedTo="Algorithm">
-      <AssociationMoniker Name="/HolaDBDataContext/Service/Service_Booking" />
-      <nodes>
-        <classShapeMoniker Id="937e0bc8-9b7f-4269-a260-44d6fcc77596" />
-        <classShapeMoniker Id="ac927ec5-8949-4d0d-b15f-8426d12481e9" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="815dbfcc-14bb-4033-b2c0-7154c4b9dc57" absoluteBounds="2.25, 12.875, 2, 1.9631982421875">
+    <classShape Id="118de4b6-03a0-4a26-b7db-09c7d65fb185" absoluteBounds="1, 9.75, 2, 1.9631982421874987">
       <DataClassMoniker Name="/HolaDBDataContext/RoomType" />
       <nestedChildShapes>
-        <elementListCompartment Id="81a95e31-bd79-4d0e-b138-f5aaa725a3ad" absoluteBounds="2.265, 13.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0c90ea10-4c3a-4178-bdef-5f4d4d44c890" absoluteBounds="1.0150000000000001, 10.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 12.875); (2.5 : 11.7708968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="e248b038-33ed-403a-ba47-d497064d10b0" absoluteBounds="3.75, 7.5, 2, 1.3862939453125014">
+      <DataClassMoniker Name="/HolaDBDataContext/Service" />
+      <nestedChildShapes>
+        <elementListCompartment Id="04ddcb4a-2c0c-4cd9-8d82-cd53df12e301" absoluteBounds="3.765, 7.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 6.782900390625); (3.22196451822917 : 6.782900390625 : JumpStart); (3.38863118489583 : 6.782900390625 : JumpEnd); (6.5 : 6.782900390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HolaDBDataContext/Customer/Customer_Booking" />
+      <nodes>
+        <classShapeMoniker Id="c514028b-1888-4af6-9c15-8aedd1c9a0a0" />
+        <classShapeMoniker Id="ed6eb0a9-3b2d-474e-9b91-858cc2651929" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 5.63544840494792); (9.25 : 5.63544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HolaDBDataContext/Booking/Booking_Invoice" />
+      <nodes>
+        <classShapeMoniker Id="ed6eb0a9-3b2d-474e-9b91-858cc2651929" />
+        <classShapeMoniker Id="e7e0d30d-45d8-4a2c-9b6d-e6b89c9fd371" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 1.63544840494792); (10.25 : 1.63544840494792); (10.25 : 4.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HolaDBDataContext/Discount/Discount_Invoice" />
+      <nodes>
+        <classShapeMoniker Id="da11e80d-5e58-4e0f-8afa-b8bfe0e71f25" />
+        <classShapeMoniker Id="e7e0d30d-45d8-4a2c-9b6d-e6b89c9fd371" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 3.22199625651042); (7.5 : 3.22199625651042); (7.5 : 4.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HolaDBDataContext/Payment/Payment_Booking" />
+      <nodes>
+        <classShapeMoniker Id="7d12881c-c568-415c-8399-fa44f6f00e3a" />
+        <classShapeMoniker Id="ed6eb0a9-3b2d-474e-9b91-858cc2651929" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.60659912109375); (3.5 : 5.60659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HolaDBDataContext/Customer/Customer_Review" />
+      <nodes>
+        <classShapeMoniker Id="c514028b-1888-4af6-9c15-8aedd1c9a0a0" />
+        <classShapeMoniker Id="eeef2a8b-76c2-4923-8292-bcf6bb1189e5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 10.8646468098958); (6.59375 : 10.8646468098958); (6.59375 : 7.2420068359375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HolaDBDataContext/Room/Room_Booking" />
+      <nodes>
+        <classShapeMoniker Id="d9289abc-102b-4cc4-a376-0060fbe9d895" />
+        <classShapeMoniker Id="ed6eb0a9-3b2d-474e-9b91-858cc2651929" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.7513612283153 : 9.75); (3.3763612283153 : 9.375); (3.125 : 9.375); (3.125 : 6.9631982421875); (3.5 : 6.5881982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HolaDBDataContext/Room/Room_Review" />
+      <nodes>
+        <classShapeMoniker Id="d9289abc-102b-4cc4-a376-0060fbe9d895" />
+        <classShapeMoniker Id="eeef2a8b-76c2-4923-8292-bcf6bb1189e5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3 : 10.6354484049479); (3.75 : 10.6354484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/HolaDBDataContext/RoomType/RoomType_Room" />
       <nodes>
-        <classShapeMoniker Id="815dbfcc-14bb-4033-b2c0-7154c4b9dc57" />
-        <classShapeMoniker Id="dfea3fa5-3c19-414a-9921-65c4a89f4dea" />
+        <classShapeMoniker Id="118de4b6-03a0-4a26-b7db-09c7d65fb185" />
+        <classShapeMoniker Id="d9289abc-102b-4cc4-a376-0060fbe9d895" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 7.90625); (6.5624975 : 7.90625); (6.5624975 : 7.2420068359375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HolaDBDataContext/Service/Service_Booking" />
+      <nodes>
+        <classShapeMoniker Id="e248b038-33ed-403a-ba47-d497064d10b0" />
+        <classShapeMoniker Id="ed6eb0a9-3b2d-474e-9b91-858cc2651929" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -54,12 +54,12 @@ namespace Hola_Resort.Models
     partial void InsertRoom(Room instance);
     partial void UpdateRoom(Room instance);
     partial void DeleteRoom(Room instance);
-    partial void InsertService(Service instance);
-    partial void UpdateService(Service instance);
-    partial void DeleteService(Service instance);
     partial void InsertRoomType(RoomType instance);
     partial void UpdateRoomType(RoomType instance);
     partial void DeleteRoomType(RoomType instance);
+    partial void InsertService(Service instance);
+    partial void UpdateService(Service instance);
+    partial void DeleteService(Service instance);
     #endregion
 		
 		public HolaDBDataContext(string connection) : 
@@ -67,8 +67,13 @@ namespace Hola_Resort.Models
 		{
 			OnCreated();
 		}
-		
-		public HolaDBDataContext(System.Data.IDbConnection connection) : 
+        public HolaDBDataContext() :
+                base(global::System.Configuration.ConfigurationManager.ConnectionStrings["HolaConnectionString"].ConnectionString, mappingSource)
+        {
+            OnCreated();
+        }
+
+        public HolaDBDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -85,12 +90,8 @@ namespace Hola_Resort.Models
 		{
 			OnCreated();
 		}
-        public HolaDBDataContext() :
-                base(global::System.Configuration.ConfigurationManager.ConnectionStrings["HolaConnectionString1"].ConnectionString, mappingSource)
-        {
-            OnCreated();
-        }
-        public System.Data.Linq.Table<AdminAccount> AdminAccounts
+		
+		public System.Data.Linq.Table<AdminAccount> AdminAccounts
 		{
 			get
 			{
@@ -154,19 +155,19 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Service> Services
-		{
-			get
-			{
-				return this.GetTable<Service>();
-			}
-		}
-		
 		public System.Data.Linq.Table<RoomType> RoomTypes
 		{
 			get
 			{
 				return this.GetTable<RoomType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Service> Services
+		{
+			get
+			{
+				return this.GetTable<Service>();
 			}
 		}
 	}
@@ -335,7 +336,7 @@ namespace Hola_Resort.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _BookingId;
+		private int _BookingId;
 		
 		private int _CustomerId;
 		
@@ -351,7 +352,13 @@ namespace Hola_Resort.Models
 		
 		private string _PaymentId;
 		
+		private int _NumberOfAdults;
+		
+		private int _NumberOfChildrens;
+		
 		private decimal _TotalPrice;
+		
+		private long _NationalIDcard;
 		
 		private EntitySet<Invoice> _Invoices;
 		
@@ -367,7 +374,7 @@ namespace Hola_Resort.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnBookingIdChanging(string value);
+    partial void OnBookingIdChanging(int value);
     partial void OnBookingIdChanged();
     partial void OnCustomerIdChanging(int value);
     partial void OnCustomerIdChanged();
@@ -383,8 +390,14 @@ namespace Hola_Resort.Models
     partial void OnServiceIdChanged();
     partial void OnPaymentIdChanging(string value);
     partial void OnPaymentIdChanged();
+    partial void OnNumberOfAdultsChanging(int value);
+    partial void OnNumberOfAdultsChanged();
+    partial void OnNumberOfChildrensChanging(int value);
+    partial void OnNumberOfChildrensChanged();
     partial void OnTotalPriceChanging(decimal value);
     partial void OnTotalPriceChanged();
+    partial void OnNationalIDcardChanging(long value);
+    partial void OnNationalIDcardChanged();
     #endregion
 		
 		public Booking()
@@ -397,8 +410,8 @@ namespace Hola_Resort.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string BookingId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int BookingId
 		{
 			get
 			{
@@ -417,7 +430,7 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", DbType="Int NOT NULL")]
 		public int CustomerId
 		{
 			get
@@ -573,6 +586,46 @@ namespace Hola_Resort.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberOfAdults", DbType="Int NOT NULL")]
+		public int NumberOfAdults
+		{
+			get
+			{
+				return this._NumberOfAdults;
+			}
+			set
+			{
+				if ((this._NumberOfAdults != value))
+				{
+					this.OnNumberOfAdultsChanging(value);
+					this.SendPropertyChanging();
+					this._NumberOfAdults = value;
+					this.SendPropertyChanged("NumberOfAdults");
+					this.OnNumberOfAdultsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberOfChildrens", DbType="Int NOT NULL")]
+		public int NumberOfChildrens
+		{
+			get
+			{
+				return this._NumberOfChildrens;
+			}
+			set
+			{
+				if ((this._NumberOfChildrens != value))
+				{
+					this.OnNumberOfChildrensChanging(value);
+					this.SendPropertyChanging();
+					this._NumberOfChildrens = value;
+					this.SendPropertyChanged("NumberOfChildrens");
+					this.OnNumberOfChildrensChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPrice", DbType="Decimal(18,0) NOT NULL")]
 		public decimal TotalPrice
 		{
@@ -589,6 +642,26 @@ namespace Hola_Resort.Models
 					this._TotalPrice = value;
 					this.SendPropertyChanged("TotalPrice");
 					this.OnTotalPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NationalIDcard", DbType="BigInt NOT NULL")]
+		public long NationalIDcard
+		{
+			get
+			{
+				return this._NationalIDcard;
+			}
+			set
+			{
+				if ((this._NationalIDcard != value))
+				{
+					this.OnNationalIDcardChanging(value);
+					this.SendPropertyChanging();
+					this._NationalIDcard = value;
+					this.SendPropertyChanged("NationalIDcard");
+					this.OnNationalIDcardChanged();
 				}
 			}
 		}
@@ -791,7 +864,7 @@ namespace Hola_Resort.Models
 		
 		private string _Address;
 		
-		private System.Nullable<System.DateTime> _DayofBirt;
+		private System.Nullable<System.DateTime> _DateofBirth;
 		
 		private string _Gender;
 		
@@ -817,8 +890,8 @@ namespace Hola_Resort.Models
     partial void OnPhoneNumberChanged();
     partial void OnAddressChanging(string value);
     partial void OnAddressChanged();
-    partial void OnDayofBirtChanging(System.Nullable<System.DateTime> value);
-    partial void OnDayofBirtChanged();
+    partial void OnDateofBirthChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateofBirthChanged();
     partial void OnGenderChanging(string value);
     partial void OnGenderChanged();
     partial void OnUsernameChanging(string value);
@@ -934,22 +1007,22 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DayofBirt", DbType="Date")]
-		public System.Nullable<System.DateTime> DayofBirt
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateofBirth", DbType="Date")]
+		public System.Nullable<System.DateTime> DateofBirth
 		{
 			get
 			{
-				return this._DayofBirt;
+				return this._DateofBirth;
 			}
 			set
 			{
-				if ((this._DayofBirt != value))
+				if ((this._DateofBirth != value))
 				{
-					this.OnDayofBirtChanging(value);
+					this.OnDateofBirthChanging(value);
 					this.SendPropertyChanging();
-					this._DayofBirt = value;
-					this.SendPropertyChanged("DayofBirt");
-					this.OnDayofBirtChanged();
+					this._DateofBirth = value;
+					this.SendPropertyChanged("DateofBirth");
+					this.OnDateofBirthChanged();
 				}
 			}
 		}
@@ -994,7 +1067,7 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string Password
 		{
 			get
@@ -1279,7 +1352,7 @@ namespace Hola_Resort.Models
 		
 		private string _InvoiceId;
 		
-		private string _BookingId;
+		private int _BookingId;
 		
 		private decimal _Total;
 		
@@ -1297,7 +1370,7 @@ namespace Hola_Resort.Models
     partial void OnCreated();
     partial void OnInvoiceIdChanging(string value);
     partial void OnInvoiceIdChanged();
-    partial void OnBookingIdChanging(string value);
+    partial void OnBookingIdChanging(int value);
     partial void OnBookingIdChanged();
     partial void OnTotalChanging(decimal value);
     partial void OnTotalChanged();
@@ -1334,8 +1407,8 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string BookingId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="Int NOT NULL")]
+		public int BookingId
 		{
 			get
 			{
@@ -1449,7 +1522,7 @@ namespace Hola_Resort.Models
 					}
 					else
 					{
-						this._BookingId = default(string);
+						this._BookingId = default(int);
 					}
 					this.SendPropertyChanged("Booking");
 				}
@@ -2144,144 +2217,6 @@ namespace Hola_Resort.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Service")]
-	public partial class Service : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ServiceId;
-		
-		private string _ServiceName;
-		
-		private decimal _PriceService;
-		
-		private EntitySet<Booking> _Bookings;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnServiceIdChanging(string value);
-    partial void OnServiceIdChanged();
-    partial void OnServiceNameChanging(string value);
-    partial void OnServiceNameChanged();
-    partial void OnPriceServiceChanging(decimal value);
-    partial void OnPriceServiceChanged();
-    #endregion
-		
-		public Service()
-		{
-			this._Bookings = new EntitySet<Booking>(new Action<Booking>(this.attach_Bookings), new Action<Booking>(this.detach_Bookings));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceId", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ServiceId
-		{
-			get
-			{
-				return this._ServiceId;
-			}
-			set
-			{
-				if ((this._ServiceId != value))
-				{
-					this.OnServiceIdChanging(value);
-					this.SendPropertyChanging();
-					this._ServiceId = value;
-					this.SendPropertyChanged("ServiceId");
-					this.OnServiceIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ServiceName
-		{
-			get
-			{
-				return this._ServiceName;
-			}
-			set
-			{
-				if ((this._ServiceName != value))
-				{
-					this.OnServiceNameChanging(value);
-					this.SendPropertyChanging();
-					this._ServiceName = value;
-					this.SendPropertyChanged("ServiceName");
-					this.OnServiceNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceService", DbType="Decimal(18,0) NOT NULL")]
-		public decimal PriceService
-		{
-			get
-			{
-				return this._PriceService;
-			}
-			set
-			{
-				if ((this._PriceService != value))
-				{
-					this.OnPriceServiceChanging(value);
-					this.SendPropertyChanging();
-					this._PriceService = value;
-					this.SendPropertyChanged("PriceService");
-					this.OnPriceServiceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_Booking", Storage="_Bookings", ThisKey="ServiceId", OtherKey="ServiceId")]
-		public EntitySet<Booking> Bookings
-		{
-			get
-			{
-				return this._Bookings;
-			}
-			set
-			{
-				this._Bookings.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Bookings(Booking entity)
-		{
-			this.SendPropertyChanging();
-			entity.Service = this;
-		}
-		
-		private void detach_Bookings(Booking entity)
-		{
-			this.SendPropertyChanging();
-			entity.Service = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RoomType")]
 	public partial class RoomType : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2489,6 +2424,144 @@ namespace Hola_Resort.Models
 		{
 			this.SendPropertyChanging();
 			entity.RoomType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Service")]
+	public partial class Service : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ServiceId;
+		
+		private string _ServiceName;
+		
+		private decimal _PriceService;
+		
+		private EntitySet<Booking> _Bookings;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnServiceIdChanging(string value);
+    partial void OnServiceIdChanged();
+    partial void OnServiceNameChanging(string value);
+    partial void OnServiceNameChanged();
+    partial void OnPriceServiceChanging(decimal value);
+    partial void OnPriceServiceChanged();
+    #endregion
+		
+		public Service()
+		{
+			this._Bookings = new EntitySet<Booking>(new Action<Booking>(this.attach_Bookings), new Action<Booking>(this.detach_Bookings));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceId", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ServiceId
+		{
+			get
+			{
+				return this._ServiceId;
+			}
+			set
+			{
+				if ((this._ServiceId != value))
+				{
+					this.OnServiceIdChanging(value);
+					this.SendPropertyChanging();
+					this._ServiceId = value;
+					this.SendPropertyChanged("ServiceId");
+					this.OnServiceIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ServiceName
+		{
+			get
+			{
+				return this._ServiceName;
+			}
+			set
+			{
+				if ((this._ServiceName != value))
+				{
+					this.OnServiceNameChanging(value);
+					this.SendPropertyChanging();
+					this._ServiceName = value;
+					this.SendPropertyChanged("ServiceName");
+					this.OnServiceNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceService", DbType="Decimal(18,0) NOT NULL")]
+		public decimal PriceService
+		{
+			get
+			{
+				return this._PriceService;
+			}
+			set
+			{
+				if ((this._PriceService != value))
+				{
+					this.OnPriceServiceChanging(value);
+					this.SendPropertyChanging();
+					this._PriceService = value;
+					this.SendPropertyChanged("PriceService");
+					this.OnPriceServiceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_Booking", Storage="_Bookings", ThisKey="ServiceId", OtherKey="ServiceId")]
+		public EntitySet<Booking> Bookings
+		{
+			get
+			{
+				return this._Bookings;
+			}
+			set
+			{
+				this._Bookings.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Bookings(Booking entity)
+		{
+			this.SendPropertyChanging();
+			entity.Service = this;
+		}
+		
+		private void detach_Bookings(Booking entity)
+		{
+			this.SendPropertyChanging();
+			entity.Service = null;
 		}
 	}
 }
