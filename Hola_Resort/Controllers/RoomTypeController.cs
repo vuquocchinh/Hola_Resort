@@ -15,5 +15,8 @@ namespace Hola_Resort.Controllers
         {
             return View(data.RoomTypes.ToList());
         }
+
+
     }
+        
 }

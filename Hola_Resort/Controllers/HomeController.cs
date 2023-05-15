@@ -3,16 +3,75 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Hola_Resort.Models;
+using Hola_Resort.ViewModel;
 
 namespace Hola_Resort.Controllers
 {
     public class HomeController : Controller
-
     {
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new BookingViewModel();
+            return View(viewModel);
         }
+
+        [HttpPost]
+        public ActionResult Index(BookingViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Xử lý chuỗi nhập vào cho giờ và phút của ngày giờ đầu vào
+                string checkinTimeString = viewModel.CheckInDate.ToShortTimeString();
+                string[] checkinTimeParts = checkinTimeString.Split(':');
+                int checkinHour = Int32.Parse(checkinTimeParts[0]);
+                if (viewModel.CheckInDate.ToString("tt") == "PM" && checkinHour != 12)
+                {
+                    checkinHour += 12;
+                }
+                int checkinMinute = Int32.Parse(checkinTimeParts[1]);
+
+                // Lưu thông tin vào Session
+                Session["checkinDate"] = viewModel.CheckInDate.Date.AddHours(checkinHour).AddMinutes(checkinMinute);
+                Session["checkoutDate"] = viewModel.CheckOutDate;
+                Session["adults"] = viewModel.NumberOfAdults;
+                Session["children"] = viewModel.NumberOfChildrens;
+
+                // Chuyển hướng sang trang RoomType
+                return RedirectToAction("Index", "RoomType");
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult Booking()
+        {
+
+            HolaDBDataContext data = new HolaDBDataContext();
+            var selectedRoom = (from r in data.Rooms
+                                join rt in data.RoomTypes on r.RoomTypeId equals rt.RoomTypeId
+                                where r.RoomId == roomId
+                                select new
+                                {
+                                    rt.RoomTypeName,
+                                    rt.Capacity,
+                                    rt.PriceDay,
+                                    rt.Bed,
+                                    r.RoomNumber,
+                                    r.Description
+                                }).FirstOrDefault();
+
+            if (selectedRoom == null)
+            {
+                return HttpNotFound();
+            }
+
+            Session["SelectedRoom"] = selectedRoom;
+
+            return RedirectToAction("Booking", "Home");
+        }
+
+
 
         public ActionResult About()
         {

@@ -1,0 +1,16 @@
+﻿@model Hola_Resort.ViewModel.BookingViewModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Booking</h2>
+@using (Html.BeginForm("BookingDetails", "Home", FormMethod.Post))
+{
+    <div>
+        <p>Check-in Date: @Model.CheckInDate</p>
+        <p>Check-out Date: @Model.CheckOutDate</p>
+        <p>Number of Adults: @Model.NumberOfAdults</p>
+        <p>Number of Children: @Model.NumberOfChildrens</p>
+    </div>}

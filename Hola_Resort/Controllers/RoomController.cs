@@ -18,17 +18,39 @@ namespace Hola_Resort.Controllers
         public ActionResult Room(string id)
         {
             var rooms = data.Rooms.Where(r => r.RoomTypeId == id).ToList();
-            
+
             return View(rooms);
         }
         public ActionResult Details(string id)
         {
-            var product = data.Rooms.FirstOrDefault(p => p.RoomId == id);
-            if (product == null)
+            var room = data.Rooms.FirstOrDefault(r => r.RoomId == id);
+            if (room == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+
+            var roomType = data.RoomTypes.FirstOrDefault(rt => rt.RoomTypeId == room.RoomTypeId);
+            if (roomType == null)
+            {
+                return HttpNotFound();
+            }
+
+            var selectedRoom = new
+            {
+                RoomTypeName = roomType.RoomTypeName,
+                Capacity = roomType.Capacity,
+                PriceDay = roomType.PriceDay,
+                Bed = roomType.Bed,
+                RoomNumber = room.RoomNumber,
+                Description = room.Description
+            };
+
+            Session["SelectedRoom"] = selectedRoom;
+
+            return RedirectToAction("Booking", "Home");
         }
+
+
+
     }
 }
