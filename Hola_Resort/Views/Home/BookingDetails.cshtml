@@ -10,6 +10,8 @@
     <p>Room Type: @Model.RoomTypeName</p>
     <p>Capacity: @Model.Capacity</p>
     <p>Price per Day: @Model.PriceDay</p>
+    <p>Total Price: @Model.TotalPrice</p>
+
     <p>Room Number: @Model.RoomNumber</p>
     <p>Description: @Model.Description</p>
 </div>
@@ -20,3 +22,37 @@
     <p>Number of Adults: @Session["adults"]</p>
     <p>Number of Children: @Session["children"]</p>
 </div>
+
+<h2>Guest Information</h2>
+
+@using (Html.BeginForm("BookingDetails", "Home", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.RoomId)
+    @Html.HiddenFor(m => m.CheckInDate)
+    @Html.HiddenFor(m => m.CheckOutDate)
+    @Html.HiddenFor(m => m.NumberOfAdults)
+    @Html.HiddenFor(m => m.NumberOfChildrens)
+
+    <div>
+        <label for="NationalId">National ID:</label>
+        @Html.TextBoxFor(m => m.NationalId)
+    </div>
+
+    <div>
+        <label for="PhoneNumber">Phone Number:</label>
+        @Html.TextBoxFor(m => m.PhoneNumber)
+    </div>
+
+    <div>
+        <label for="Name">Name:</label>
+        @Html.TextBoxFor(m => m.Name)
+    </div>
+
+    <div>
+        <label for="Email">Email:</label>
+        @Html.TextBoxFor(m => m.Email)
+    </div>
+
+    <input type="submit" value="Submit" />
+}
+</form>

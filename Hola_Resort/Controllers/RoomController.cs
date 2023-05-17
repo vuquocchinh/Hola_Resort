@@ -28,14 +28,14 @@ public class RoomController : Controller
             return HttpNotFound();
         }
 
-        // Lưu thông tin phòng vào ViewBag để truy cập từ view
-        ViewBag.RoomTypeName = roomType.RoomTypeName;   
+        ViewBag.RoomTypeName = roomType.RoomTypeName;
         ViewBag.Capacity = roomType.Capacity;
         ViewBag.PriceDay = roomType.PriceDay;
         ViewBag.RoomNumber = room.RoomNumber;
         ViewBag.Description = room.Description;
-        
 
-        return RedirectToAction("BookingDetails", "Home");
+        // Truyền giá trị RoomId vào BookingDetails action
+        return RedirectToAction("BookingDetails", "Home", new { id = room.RoomId });
     }
+
 }

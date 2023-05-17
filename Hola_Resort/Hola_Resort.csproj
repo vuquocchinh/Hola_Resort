@@ -2117,11 +2117,6 @@
     <Content Include="Content\scss\bootstrap\scss\_type.scss" />
     <Content Include="Content\scss\bootstrap\scss\_utilities.scss" />
     <Content Include="Content\scss\bootstrap\scss\_variables.scss" />
-    <Content Include="Models\HolaDB.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>HolaDB.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Assets\ad\scss\navs\_global.scss" />
     <Content Include="Assets\ad\scss\navs\_sidebar.scss" />
@@ -2316,6 +2311,11 @@
     <Content Include="Areas\Admin\Views\Phong\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Phong\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Phong\Detail.cshtml" />
+    <Content Include="Models\HolaDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>HolaDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Models\HolaDB.dbml.layout">
       <DependentUpon>HolaDB.dbml</DependentUpon>
     </None>
