@@ -1,56 +1,41 @@
 ﻿using Hola_Resort.Models;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Policy;
-using System.Web;
 using System.Web.Mvc;
 
-namespace Hola_Resort.Controllers
+public class RoomController : Controller
 {
-    public class RoomController : Controller
+    private HolaDBDataContext data = new HolaDBDataContext();
+
+    public ActionResult Room(string id)
     {
-        // GET: Room
-        HolaDBDataContext data = new HolaDBDataContext();
+        var rooms = data.Rooms.Where(r => r.RoomTypeId == id).ToList();
+        return View(rooms);
+    }
 
-        public ActionResult Room(string id)
+    public ActionResult RoomDetails(string id)
+    {
+        var room = data.Rooms.FirstOrDefault(r => r.RoomId == id);
+
+        if (room == null)
         {
-            var rooms = data.Rooms.Where(r => r.RoomTypeId == id).ToList();
-
-            return View(rooms);
-        }
-        public ActionResult Details(string id)
-        {
-            var room = data.Rooms.FirstOrDefault(r => r.RoomId == id);
-            if (room == null)
-            {
-                return HttpNotFound();
-            }
-
-            var roomType = data.RoomTypes.FirstOrDefault(rt => rt.RoomTypeId == room.RoomTypeId);
-            if (roomType == null)
-            {
-                return HttpNotFound();
-            }
-
-            var selectedRoom = new
-            {
-                RoomTypeName = roomType.RoomTypeName,
-                Capacity = roomType.Capacity,
-                PriceDay = roomType.PriceDay,
-                Bed = roomType.Bed,
-                RoomNumber = room.RoomNumber,
-                Description = room.Description
-            };
-
-            Session["SelectedRoom"] = selectedRoom;
-
-            return RedirectToAction("Booking", "Home");
+            return HttpNotFound();
         }
 
+        var roomType = data.RoomTypes.FirstOrDefault(rt => rt.RoomTypeId == room.RoomTypeId);
 
+        if (roomType == null)
+        {
+            return HttpNotFound();
+        }
 
+        // Lưu thông tin phòng vào ViewBag để truy cập từ view
+        ViewBag.RoomTypeName = roomType.RoomTypeName;   
+        ViewBag.Capacity = roomType.Capacity;
+        ViewBag.PriceDay = roomType.PriceDay;
+        ViewBag.RoomNumber = room.RoomNumber;
+        ViewBag.Description = room.Description;
+        
+
+        return RedirectToAction("BookingDetails", "Home");
     }
 }

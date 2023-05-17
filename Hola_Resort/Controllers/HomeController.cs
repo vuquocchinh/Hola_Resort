@@ -10,14 +10,16 @@ namespace Hola_Resort.Controllers
 {
     public class HomeController : Controller
     {
+        private HolaDBDataContext data = new HolaDBDataContext();
+
         public ActionResult Index()
         {
-            var viewModel = new BookingViewModel();
+            var viewModel = new BookingDetailsViewModel();
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Index(BookingViewModel viewModel)
+        public ActionResult Index(BookingDetailsViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -44,34 +46,44 @@ namespace Hola_Resort.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Booking()
+        public ActionResult BookingDetails(string id)
         {
-
-            HolaDBDataContext data = new HolaDBDataContext();
-            var selectedRoom = (from r in data.Rooms
-                                join rt in data.RoomTypes on r.RoomTypeId equals rt.RoomTypeId
-                                where r.RoomId == roomId
-                                select new
-                                {
-                                    rt.RoomTypeName,
-                                    rt.Capacity,
-                                    rt.PriceDay,
-                                    rt.Bed,
-                                    r.RoomNumber,
-                                    r.Description
-                                }).FirstOrDefault();
-
-            if (selectedRoom == null)
+            // Lấy thông tin phòng dựa trên id
+            var room = data.Rooms.FirstOrDefault(r => r.RoomId == id);
+            if (room == null)
             {
                 return HttpNotFound();
             }
 
-            Session["SelectedRoom"] = selectedRoom;
+            // Lấy thông tin room type của phòng
+            var roomType = data.RoomTypes.FirstOrDefault(rt => rt.RoomTypeId == room.RoomTypeId);
+            if (roomType == null)
+            {
+                return HttpNotFound();
+            }
 
-            return RedirectToAction("Booking", "Home");
+            // Lấy thông tin đặt phòng từ Session
+            var checkinDate = (DateTime)Session["checkinDate"];
+            var checkoutDate = (DateTime)Session["checkoutDate"];
+            var adults = (int)Session["adults"];
+            var children = (int)Session["children"];
+
+            // Tạo view model BookingDetailsViewModel
+            var viewModel = new BookingDetailsViewModel
+            {
+               RoomTypeName = roomType.RoomTypeName,
+                Capacity = roomType.Capacity,
+                PriceDay = roomType.PriceDay,
+                RoomNumber = room.RoomNumber,
+                Description = room.Description,
+                CheckInDate = checkinDate,
+                CheckOutDate = checkoutDate,
+                NumberOfAdults = adults,
+                NumberOfChildrens = children
+            };
+
+            return View(viewModel);
         }
-
-
 
         public ActionResult About()
         {

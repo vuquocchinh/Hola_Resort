@@ -1,0 +1,22 @@
+﻿@model Hola_Resort.ViewModel.BookingDetailsViewModel
+
+@{
+    ViewBag.Title = "BookingDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Booking Details</h2>
+<div>
+    <p>Room Type: @Model.RoomTypeName</p>
+    <p>Capacity: @Model.Capacity</p>
+    <p>Price per Day: @Model.PriceDay</p>
+    <p>Room Number: @Model.RoomNumber</p>
+    <p>Description: @Model.Description</p>
+</div>
+
+<div>
+    <p>Check-in Date: @Session["checkinDate"]</p>
+    <p>Check-out Date: @Session["checkoutDate"]</p>
+    <p>Number of Adults: @Session["adults"]</p>
+    <p>Number of Children: @Session["children"]</p>
+</div>

@@ -231,7 +231,7 @@
       <DependentUpon>HolaDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\BookingViewModel.cs" />
+    <Compile Include="ViewModel\BookingDetailsViewModel.cs" />
     <Compile Include="ViewModel\VMlogin.cs" />
     <Compile Include="ViewModel\VMregister.cs" />
   </ItemGroup>
@@ -2349,7 +2349,7 @@
     <Content Include="Views\Room\Room.cshtml" />
     <Content Include="Views\Room\Details.cshtml" />
     <Content Include="Views\Search\SearchRooms.cshtml" />
-    <Content Include="Views\Home\Booking.cshtml" />
+    <Content Include="Views\Home\BookingDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
