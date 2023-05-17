@@ -71,7 +71,6 @@ namespace Hola_Resort.Controllers
             // Tạo view model BookingDetailsViewModel
             var viewModel = new BookingDetailsViewModel
             {
-                RoomId = room.RoomId,
                 RoomTypeName = roomType.RoomTypeName,
                 Capacity = roomType.Capacity,
                 PriceDay = roomType.PriceDay,
@@ -85,7 +84,6 @@ namespace Hola_Resort.Controllers
 
             return View(viewModel);
         }
-
 
         [HttpPost]
         public ActionResult BookingDetails(BookingDetailsViewModel viewModel)
@@ -123,14 +121,12 @@ namespace Hola_Resort.Controllers
                     NumberOfAdults = adults,
                     NumberOfChildrens = children,
                     TotalPrice = CalculateTotalPrice(viewModel.RoomId, checkinDate, checkoutDate, viewModel.NumberOfRooms),
-                    // Thêm các trường khác của booking
-                    NationalId = viewModel.NationalId // Gán NationalId
                 };
 
             data.Bookings.InsertOnSubmit(booking);
             data.SubmitChanges();
 
-            // Chuyển hướng đến trang home
+            // Chuyển hướng đến trang xác nhận đặt phòng
             return RedirectToAction("Index", "Home");
 
             // Hàm tính tổng giá tiền
