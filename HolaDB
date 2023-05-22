@@ -1,0 +1,335 @@
+USE [master]
+GO
+/****** Object:  Database [hola]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+CREATE DATABASE [hola]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'hola', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\hola.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'hola_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\hola_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [hola] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [hola].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [hola] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [hola] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [hola] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [hola] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [hola] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [hola] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [hola] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [hola] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [hola] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [hola] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [hola] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [hola] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [hola] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [hola] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [hola] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [hola] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [hola] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [hola] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [hola] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [hola] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [hola] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [hola] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [hola] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [hola] SET  MULTI_USER 
+GO
+ALTER DATABASE [hola] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [hola] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [hola] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [hola] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [hola] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [hola] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [hola] SET QUERY_STORE = OFF
+GO
+USE [hola]
+GO
+/****** Object:  Table [dbo].[AdminAccounts]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AdminAccounts](
+	[AdminId] [int] IDENTITY(1,1) NOT NULL,
+	[Username] [nvarchar](50) NOT NULL,
+	[Password] [nvarchar](50) NOT NULL,
+	[Email] [nvarchar](50) NOT NULL,
+	[FullName] [nvarchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[AdminId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[Username] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Booking]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Booking](
+	[BookingId] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerId] [int] NULL,
+	[RoomId] [nvarchar](50) NOT NULL,
+	[CheckInDate] [date] NOT NULL,
+	[CheckOutDate] [date] NOT NULL,
+	[NumberOfRooms] [int] NOT NULL,
+	[ServiceId] [nvarchar](50) NULL,
+	[PaymentId] [nvarchar](50) NULL,
+	[NumberOfAdults] [int] NOT NULL,
+	[NumberOfChildrens] [int] NOT NULL,
+	[TotalPrice] [decimal](18, 0) NOT NULL,
+	[GuestId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[BookingId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Customer]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customer](
+	[CustomerId] [int] IDENTITY(1,1) NOT NULL,
+	[FullName] [nvarchar](100) NOT NULL,
+	[Email] [nvarchar](100) NOT NULL,
+	[PhoneNumber] [nvarchar](20) NOT NULL,
+	[Address] [nvarchar](200) NOT NULL,
+	[DateofBirth] [date] NULL,
+	[Gender] [varchar](1) NULL,
+	[Username] [nvarchar](50) NOT NULL,
+	[Password] [nvarchar](max) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Discount]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Discount](
+	[DiscountId] [nvarchar](50) NOT NULL,
+	[DiscountName] [nvarchar](50) NOT NULL,
+	[Percentage] [decimal](18, 0) NOT NULL,
+	[StartDate] [datetime] NOT NULL,
+	[EndDate] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[DiscountId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[GuestInformation]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[GuestInformation](
+	[GuestId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Email] [nvarchar](100) NOT NULL,
+	[PhoneNumber] [nvarchar](100) NOT NULL,
+	[NationalId] [nvarchar](15) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[GuestId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Invoice]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Invoice](
+	[InvoiceId] [nvarchar](50) NOT NULL,
+	[BookingId] [int] NOT NULL,
+	[Total] [decimal](18, 0) NOT NULL,
+	[DiscountId] [nvarchar](50) NOT NULL,
+	[PaymentDate] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[InvoiceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Payment]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Payment](
+	[PaymentId] [nvarchar](50) NOT NULL,
+	[PaymentMethod] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PaymentId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Review]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Review](
+	[ReviewId] [nvarchar](50) NOT NULL,
+	[CustomerId] [int] IDENTITY(1,1) NOT NULL,
+	[RoomId] [nvarchar](50) NOT NULL,
+	[Rating] [int] NOT NULL,
+	[Comment] [nvarchar](200) NOT NULL,
+	[ReviewDate] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ReviewId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Room]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Room](
+	[RoomId] [nvarchar](50) NOT NULL,
+	[RoomNumber] [nvarchar](10) NOT NULL,
+	[RoomTypeId] [nvarchar](50) NOT NULL,
+	[RoomStatus] [bit] NOT NULL,
+	[Description] [nvarchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[RoomId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[RoomType]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RoomType](
+	[RoomTypeId] [nvarchar](50) NOT NULL,
+	[Image] [nvarchar](200) NULL,
+	[RoomTypeName] [nvarchar](50) NOT NULL,
+	[Capacity] [int] NOT NULL,
+	[PriceDay] [decimal](18, 0) NOT NULL,
+	[Bed] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[RoomTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Service]    Script Date: Sun, 21-May-23 6:47:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Service](
+	[ServiceId] [nvarchar](50) NOT NULL,
+	[ServiceName] [nvarchar](50) NOT NULL,
+	[PriceService] [decimal](18, 0) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ServiceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Booking]  WITH CHECK ADD  CONSTRAINT [FK_Booking_BookingDetail] FOREIGN KEY([GuestId])
+REFERENCES [dbo].[GuestInformation] ([GuestId])
+GO
+ALTER TABLE [dbo].[Booking] CHECK CONSTRAINT [FK_Booking_BookingDetail]
+GO
+ALTER TABLE [dbo].[Booking]  WITH CHECK ADD  CONSTRAINT [fk_Booking_Customer] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customer] ([CustomerId])
+GO
+ALTER TABLE [dbo].[Booking] CHECK CONSTRAINT [fk_Booking_Customer]
+GO
+ALTER TABLE [dbo].[Booking]  WITH CHECK ADD  CONSTRAINT [fk_Booking_Payment] FOREIGN KEY([PaymentId])
+REFERENCES [dbo].[Payment] ([PaymentId])
+GO
+ALTER TABLE [dbo].[Booking] CHECK CONSTRAINT [fk_Booking_Payment]
+GO
+ALTER TABLE [dbo].[Booking]  WITH CHECK ADD  CONSTRAINT [fk_Booking_Room] FOREIGN KEY([RoomId])
+REFERENCES [dbo].[Room] ([RoomId])
+GO
+ALTER TABLE [dbo].[Booking] CHECK CONSTRAINT [fk_Booking_Room]
+GO
+ALTER TABLE [dbo].[Booking]  WITH CHECK ADD  CONSTRAINT [fk_Booking_Service] FOREIGN KEY([ServiceId])
+REFERENCES [dbo].[Service] ([ServiceId])
+GO
+ALTER TABLE [dbo].[Booking] CHECK CONSTRAINT [fk_Booking_Service]
+GO
+ALTER TABLE [dbo].[Invoice]  WITH CHECK ADD  CONSTRAINT [fk_Invoice_Booking] FOREIGN KEY([BookingId])
+REFERENCES [dbo].[Booking] ([BookingId])
+GO
+ALTER TABLE [dbo].[Invoice] CHECK CONSTRAINT [fk_Invoice_Booking]
+GO
+ALTER TABLE [dbo].[Invoice]  WITH CHECK ADD  CONSTRAINT [fk_Invoice_Discount] FOREIGN KEY([DiscountId])
+REFERENCES [dbo].[Discount] ([DiscountId])
+GO
+ALTER TABLE [dbo].[Invoice] CHECK CONSTRAINT [fk_Invoice_Discount]
+GO
+ALTER TABLE [dbo].[Review]  WITH CHECK ADD  CONSTRAINT [fk_Review_Customer] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customer] ([CustomerId])
+GO
+ALTER TABLE [dbo].[Review] CHECK CONSTRAINT [fk_Review_Customer]
+GO
+ALTER TABLE [dbo].[Review]  WITH CHECK ADD  CONSTRAINT [fk_Review_Room] FOREIGN KEY([RoomId])
+REFERENCES [dbo].[Room] ([RoomId])
+GO
+ALTER TABLE [dbo].[Review] CHECK CONSTRAINT [fk_Review_Room]
+GO
+ALTER TABLE [dbo].[Room]  WITH CHECK ADD  CONSTRAINT [fk_Room_RoomType] FOREIGN KEY([RoomTypeId])
+REFERENCES [dbo].[RoomType] ([RoomTypeId])
+GO
+ALTER TABLE [dbo].[Room] CHECK CONSTRAINT [fk_Room_RoomType]
+GO
+USE [master]
+GO
+ALTER DATABASE [hola] SET  READ_WRITE 
+GO
