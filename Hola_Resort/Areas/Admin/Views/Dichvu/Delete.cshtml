@@ -1,0 +1,50 @@
+﻿@model Hola_Resort.Models.Service
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA DỊCH VỤ</h2>
+
+
+<div>
+    <h4>Service</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã dịch vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceId)
+        </dd>
+
+        <dt>
+            Tên dịch vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceName)
+        </dd>
+
+        <dt>
+            Giá tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceService)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ListDV")
+        </div>
+    }
+</div>

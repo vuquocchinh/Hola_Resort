@@ -1,0 +1,64 @@
+﻿@model Hola_Resort.Models.Discount
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA SỰ KIỆN</h2>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã giảm giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountId)
+        </dd>
+
+        <dt>
+            Tên sự kiện
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountName)
+        </dd>
+
+        <dt>
+            Phần trăm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Percentage)
+        </dd>
+
+        <dt>
+            Ngày bắt đầu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            Ngày kết thúc
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Discount")
+        </div>
+    }
+</div>

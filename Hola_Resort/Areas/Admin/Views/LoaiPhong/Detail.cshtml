@@ -1,0 +1,51 @@
+﻿@model Hola_Resort.Models.RoomType
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT LOẠI PHÒNG</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã loại phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomTypeId)
+        </dd>
+
+        <dt>
+            Tên loại phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomTypeName)
+        </dd>
+
+        <dt>
+            Sức chứa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt>
+            Giá tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceDay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoomTypeId }) |
+    @Html.ActionLink("Back to List", "ListLPhong")
+</p>

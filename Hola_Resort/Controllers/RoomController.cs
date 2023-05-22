@@ -9,6 +9,7 @@ public class RoomController : Controller
     public ActionResult Room(string id)
     {
         var rooms = data.Rooms.Where(r => r.RoomTypeId == id).ToList();
+
         return View(rooms);
     }
 
@@ -37,5 +38,6 @@ public class RoomController : Controller
         // Truyền giá trị RoomId vào BookingDetails action
         return RedirectToAction("BookingDetails", "BookingRoom", new { id = room.RoomId });
     }
+
 
 }

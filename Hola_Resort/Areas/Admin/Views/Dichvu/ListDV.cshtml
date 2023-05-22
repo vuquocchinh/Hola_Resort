@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Hola_Resort.Models.Customer>
+﻿@model IEnumerable<Hola_Resort.Models.Service>
 
 @{
-    ViewBag.Title = "Thông tin khách hàng";
+    ViewBag.Title = "ListDV";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    var grid = new WebGrid(Model, canPage: true, defaultSort: "CustomerId", rowsPerPage: 5);
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "ServiceId", rowsPerPage: 5);
 }
 
 <html>
@@ -35,9 +35,9 @@
     </style>
 </head>
 <body>
-    <h3>DANH SÁCH THÔNG TIN KHÁCH HÀNG</h3>
+    <h3>DANH SÁCH DỊCH VỤ</h3>
     <p>
-        @Html.ActionLink("Thêm mới khách hàng", "Create")
+        @Html.ActionLink("Thêm dịch vụ", "Create")
     </p>
     <p>
         @Html.ActionLink("Tìm kiếm", "Search")
@@ -51,22 +51,19 @@
             alternatingRowStyle: "alternatingRowStyle",
               columns: new[]  // colums in grid
               {
-                grid.Column("CustomerId","Mã khách hàng",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
-                
-                grid.Column("FullName","Tên khách hàng"),
-                grid.Column("Gender","Giới tính"),
-                
-                grid.Column("Address","Địa chỉ"),
-                grid.Column("DateofBirth", "Ngày sinh"),
-                grid.Column("Email","Email"),
-                grid.Column("PhoneNumber","Số điện thoại"),
+
+                grid.Column("ServiceId","Mã dịch vụ"),
+                grid.Column("ServiceName","Tên dịch vụ"),
+
+                grid.Column("PriceService", "Giá tiền"),
+
                 grid.Column("Chức năng", format: @<text>
     <a href="@Url.Action("Edit",
-                        new { id = item.CustomerId})" class="edit-btn"><abbr title="Cập nhật"><img src="/Assets/ad/img/edit.png" width="20" height="20" /></abbr></a>
+                        new { id = item.ServiceId})" class="edit-btn"><abbr title="Cập nhật"><img src="/Assets/ad/img/edit.png" width="20" height="20" /></abbr></a>
     <a href="@Url.Action("Detail",
-                        new { id = item.CustomerId})" class="edit-btn"><abbr title="Xem chi tiết"><img src="/Assets/ad/img/details.png" width="20" height="20" /></abbr></a>
+                        new { id = item.ServiceId})" class="edit-btn"><abbr title="Xem chi tiết"><img src="/Assets/ad/img/details.png" width="20" height="20" /></abbr></a>
     <a href="@Url.Action("Delete",
-                        new { id = item.CustomerId})" class="edit-btn">
+                        new { id = item.ServiceId})" class="edit-btn">
         <abbr title="Xóa">
             <img src="/Assets/ad/img/delete.png" width="20" height="20" />
         </abbr>

@@ -1,0 +1,58 @@
+﻿@model Hola_Resort.Models.Invoice
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã hóa đơn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceId)
+        </dd>
+
+        <dt>
+            Mã đặt phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingId)
+        </dd>
+
+        <dt>
+            Mã giảm giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountId)
+        </dd>
+
+        <dt>
+            Ngày thanh toán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentDate)
+        </dd>
+
+        <dt>
+            Tổng tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "ListHD")
+</p>

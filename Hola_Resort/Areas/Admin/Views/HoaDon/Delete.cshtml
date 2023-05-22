@@ -1,0 +1,65 @@
+﻿@model Hola_Resort.Models.Invoice
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA HÓA ĐƠN</h2>
+
+
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã hóa đơn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceId)
+        </dd>
+
+        <dt>
+            Mã đặt phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingId)
+        </dd>
+
+        <dt>
+            Mã giảm giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountId)
+        </dd>
+
+        <dt>
+            Ngày thanh toán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentDate)
+        </dd>
+
+        <dt>
+            Tổng tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ListHD")
+        </div>
+    }
+</div>

@@ -1,0 +1,52 @@
+﻿@model Hola_Resort.Models.RoomType
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA THÔNG TIN LOẠI PHÒNG</h2>
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceDay)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ListLPhong")
+        </div>
+    }
+</div>

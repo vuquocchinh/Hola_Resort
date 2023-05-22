@@ -1,0 +1,43 @@
+﻿@model Hola_Resort.Models.Service
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT DỊCH VỤ</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã dịch vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceId)
+        </dd>
+
+        <dt>
+            Tên dịch vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceName)
+        </dd>
+
+        <dt>
+            Giá tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceService)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ServiceId }) |
+    @Html.ActionLink("Back to List", "ListDV")
+</p>

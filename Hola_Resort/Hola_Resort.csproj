@@ -215,8 +215,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ADhomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DichvuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DiscountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaiPhongController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhongController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLyBookingController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLyUserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoanNVController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HoaDonController.cs" />
     <Compile Include="Controllers\BookingRoomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
@@ -2316,6 +2322,26 @@
       <LastGenOutput>HolaDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Admin\Views\Dichvu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Dichvu\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Dichvu\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Dichvu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Dichvu\ListDV.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\Discount.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDon\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDon\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDon\ListHD.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiPhong\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiPhong\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiPhong\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiPhong\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiPhong\ListLPhong.cshtml" />
+    <Content Include="Areas\Admin\Views\QLyBooking\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoanNV\ListTK.cshtml" />
     <None Include="Models\HolaDB.dbml.layout">
       <DependentUpon>HolaDB.dbml</DependentUpon>
     </None>
