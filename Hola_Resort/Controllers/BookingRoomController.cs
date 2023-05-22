@@ -33,11 +33,7 @@ namespace Hola_Resort.Controllers
             }
             
 
-            // Lấy thông tin đặt phòng từ Session
-            var checkinDate = (DateTime)Session["checkinDate"];
-            var checkoutDate = (DateTime)Session["checkoutDate"];
-            var adults = (int)Session["adults"];
-            var children = (int)Session["children"];
+           
 
             // Tạo view model BookingDetailsViewModel
             var viewModel = new BookingDetailsViewModel
@@ -49,19 +45,10 @@ namespace Hola_Resort.Controllers
                 PriceDay = roomType.PriceDay,
                 RoomNumber = room.RoomNumber,
                 Description = room.Description,
-                CheckInDate = checkinDate,
-                CheckOutDate = checkoutDate,
-                NumberOfAdults = adults,
-                NumberOfChildrens = children,
+             
             };
 
-            // Tính toán số ngày đặt phòng
-            TimeSpan totalDays = checkoutDate.Date - checkinDate.Date;
-            int numberOfDays = totalDays.Days;
-
-            // Tính toán tổng tiền dựa trên giá tiền và số ngày đặt phòng
-            decimal totalPrice = roomType.PriceDay * numberOfDays;
-            viewModel.TotalPrice = totalPrice;
+           
             
             return View(viewModel);
         }
@@ -85,15 +72,15 @@ namespace Hola_Resort.Controllers
             data.GuestInformations.InsertOnSubmit(guestInformation);
             data.SubmitChanges();
 
-            
-            // Lấy thông tin đặt phòng từ Session
-            var checkinDate = (DateTime)Session["checkinDate"];
-            var checkoutDate = (DateTime)Session["checkoutDate"];
-            var adults = (int)Session["adults"];
-            var children = (int)Session["children"];
 
-            TimeSpan totalDays = checkoutDate.Date - checkinDate.Date;
-            int numberOfDays = totalDays.Days;
+            // Lấy thông tin đặt phòng 
+
+            var checkinDate = viewModel.CheckInDate;
+            var checkoutDate = viewModel.CheckOutDate;
+            var adults = viewModel.NumberOfAdults;
+            var children = viewModel.NumberOfChildrens;
+
+            
 
             // Lấy thông tin phòng dựa trên id
             var room = data.Rooms.FirstOrDefault(r => r.RoomId == viewModel.RoomId);
@@ -108,10 +95,13 @@ namespace Hola_Resort.Controllers
                 return HttpNotFound();
             }
 
+            TimeSpan totalDays = checkoutDate.Date - checkinDate.Date;
+            int numberOfDays = totalDays.Days;
+
             // Tính toán tổng tiền dựa trên giá tiền và số ngày đặt phòng
             decimal totalPrice = roomType.PriceDay * numberOfDays;
             viewModel.TotalPrice = totalPrice;
-
+            
 
             // Lưu thông tin đặt phòng
             var booking = new Booking

@@ -25,11 +25,11 @@ namespace Hola_Resort.Controllers
             {
 
 
-                // Lưu thông tin vào Session
-                Session["checkinDate"] = viewModel.CheckInDate.Date;
-                Session["checkoutDate"] = viewModel.CheckOutDate;
-                Session["adults"] = viewModel.NumberOfAdults;
-                Session["children"] = viewModel.NumberOfChildrens;
+                // Lưu thông tin vào db
+                var checkinDate = viewModel.CheckInDate;
+                var checkoutDate = viewModel.CheckOutDate;
+                var adults = viewModel.NumberOfAdults;
+                var children = viewModel.NumberOfChildrens;
 
                 // Chuyển hướng sang trang RoomType
                 return RedirectToAction("Index", "RoomType");

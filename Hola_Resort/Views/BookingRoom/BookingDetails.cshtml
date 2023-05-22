@@ -4,11 +4,13 @@
     ViewBag.Title = "BookingDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 <h2 style="text-align:center;">Booking Details</h2>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -27,10 +29,6 @@
                 <p>@Model.PriceDay</p>
             </div>
             <div class="form-group">
-                <label>Total Price:</label>
-                <p>@Model.TotalPrice</p>
-            </div>
-            <div class="form-group">
                 <label>Room Number:</label>
                 <p>@Model.RoomNumber</p>
             </div>
@@ -42,75 +40,69 @@
         <div class="col-md-6">
             <h4>Booking Information</h4>
             <hr />
-            <div class="form-group">
-                <label for="total_adults">Adults:</label>
-                <input type="number" id="total_adults" name="total_adults" placeholder="2" min="1" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="total_children">Children:</label>
-                <input type="number" id="total_children" name="total_children" placeholder="2" min="0" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="checkin-date">Check-in Date:</label>
-                <input type="date" id="checkin-date" name="checkin" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="checkout-date">Check-out Date:</label>
-                <input type="date" id="checkout-date" name="checkout" class="form-control" required>
-            </div>
-            <hr />
+            @using (Html.BeginForm("BookingDetails", "BookingRoom", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="NumberOfAdults">Adults:</label>
+                    <input type="number" id="NumberOfAdults" name="NumberOfAdults" placeholder="2" min="1" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="NumberOfChildrens">Children:</label>
+                    <input type="number" id="NumberOfChildrens" name="NumberOfChildrens" placeholder="2" min="0" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="CheckInDate">Check-in Date:</label>
+                    <input type="date" id="CheckInDate" name="CheckInDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="CheckOutDate">Check-out Date:</label>
+                    <input type="date" id="CheckOutDate" name="CheckOutDate" class="form-control" required>
+                </div>
+                <hr />
+                <h2>Guest Information</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="NationalId">National ID:</label>
+                            <input type="text" id="NationalId" name="NationalId" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="PhoneNumber">Phone Number:</label>
+                            <input type="text" id="PhoneNumber" name="PhoneNumber" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Name">Name:</label>
+                            <input type="text" id="Name" name="Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email:</label>
+                            <input type="email" id="Email" name="Email" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.RoomId)
+                @Html.HiddenFor(m => m.RoomTypeId)
+                @Html.HiddenFor(m => m.TotalPrice)
+                @Html.HiddenFor(m => m.RoomTypeName)
+                @Html.HiddenFor(m => m.Capacity)
+                @Html.HiddenFor(m => m.PriceDay)
+                @Html.HiddenFor(m => m.RoomNumber)
+                @Html.HiddenFor(m => m.Description)
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            }
         </div>
     </div>
 </div>
 
-<h2>Guest Information</h2>
-@using (Html.BeginForm("BookingDetails", "BookingRoom", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.RoomId)
-    @Html.HiddenFor(m => m.CheckInDate.Date)
-    @Html.HiddenFor(m => m.CheckOutDate.Date)
-    @Html.HiddenFor(m => m.NumberOfAdults)
-    @Html.HiddenFor(m => m.NumberOfChildrens)
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="NationalId">National ID:</label>
-                    @Html.TextBoxFor(m => m.NationalId, new { @class = "form-control" })
-                    <div class="form-group">
-                        <label for="PhoneNumber">Phone Number:</label>
-                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="Name">Name:</label>
-                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label for="Email">Email:</label>
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="submit" value="Submit" class="btn btn-primary" />
-                </div>
-            </div>
-        </div>
-    </div>
-}
-    </form>
-
-    <style>
-        .BG {
-            background-image: url('../../content/img/bg.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            opacity: 0.8;
-        }
-    </style>
+<style>
+    .BG {
+        background-image: url('../../content/img/bg.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        opacity: 0.8;
+    }
+</style>
