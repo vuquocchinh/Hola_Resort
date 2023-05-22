@@ -94,6 +94,16 @@
       <Association Name="Service_Booking" Member="Bookings" ThisKey="ServiceId" OtherKey="ServiceId" Type="Booking" />
     </Type>
   </Table>
+  <Table Name="dbo.GuestInformation" Member="GuestInformations">
+    <Type Name="GuestInformation">
+      <Column Name="GuestId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="NationalId" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Association Name="GuestInformation_Booking" Member="Bookings" ThisKey="GuestId" OtherKey="GuestId" Type="Booking" />
+    </Type>
+  </Table>
   <Table Name="dbo.Booking" Member="Bookings">
     <Type Name="Booking">
       <Column Name="BookingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -107,23 +117,13 @@
       <Column Name="NumberOfAdults" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="NumberOfChildrens" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="IdBookingDetail" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GuestId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Booking_Invoice" Member="Invoices" ThisKey="BookingId" OtherKey="BookingId" Type="Invoice" />
+      <Association Name="GuestInformation_Booking" Member="GuestInformation" ThisKey="GuestId" OtherKey="GuestId" Type="GuestInformation" IsForeignKey="true" />
       <Association Name="Customer_Booking" Member="Customer" ThisKey="CustomerId" OtherKey="CustomerId" Type="Customer" IsForeignKey="true" />
       <Association Name="Payment_Booking" Member="Payment" ThisKey="PaymentId" OtherKey="PaymentId" Type="Payment" IsForeignKey="true" />
       <Association Name="Room_Booking" Member="Room" ThisKey="RoomId" OtherKey="RoomId" Type="Room" IsForeignKey="true" />
       <Association Name="Service_Booking" Member="Service" ThisKey="ServiceId" OtherKey="ServiceId" Type="Service" IsForeignKey="true" />
-      <Association Name="bookingdetail_Booking" Member="bookingdetail" ThisKey="IdBookingDetail" OtherKey="IdBookingDetail" Type="bookingdetail" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.bookingdetail" Member="bookingdetails">
-    <Type Name="bookingdetail">
-      <Column Name="IdBookingDetail" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="NationalId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="bookingdetail_Booking" Member="Bookings" ThisKey="IdBookingDetail" OtherKey="IdBookingDetail" Type="Booking" />
     </Type>
   </Table>
 </Database>

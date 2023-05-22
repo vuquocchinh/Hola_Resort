@@ -50,16 +50,26 @@
                         <div class="row g-2">
                             <div class="col-md-3">
                                 <div class="date" id="date1" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input"
-                                           placeholder="Check in" data-target="#date1" data-toggle="datetimepicker"
-                                           name="CheckInDate" />
+                                    <div class="date" id="date1" data-target-input="nearest">
+                                        <input placeholder="Check in"
+                                               class="form-control"
+                                               type="text"
+                                               onfocus="(this.type='date')"
+                                               onblur="(this.type='text')"
+                                               name="CheckInDate" />
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="date" id="date2" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input"
-                                           placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"
+                                    <input placeholder="Check out"
+                                           class="form-control"
+                                           type="text"
+                                           onfocus="(this.type='date')"
+                                           onblur="(this.type='text')"
                                            name="CheckOutDate" />
+
                                 </div>
                             </div>
                             <div class="col-md-3">

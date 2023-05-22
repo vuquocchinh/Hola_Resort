@@ -217,10 +217,10 @@
     <Compile Include="Areas\Admin\Controllers\ADhomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLyUserController.cs" />
+    <Compile Include="Controllers\BookingRoomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\RoomTypeController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2348,8 +2348,7 @@
     <Content Include="Views\RoomType\Index.cshtml" />
     <Content Include="Views\Room\Room.cshtml" />
     <Content Include="Views\Room\Details.cshtml" />
-    <Content Include="Views\Search\SearchRooms.cshtml" />
-    <Content Include="Views\Home\BookingDetails.cshtml" />
+    <Content Include="Views\BookingRoom\BookingDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

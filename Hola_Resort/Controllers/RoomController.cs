@@ -29,13 +29,13 @@ public class RoomController : Controller
         }
 
         ViewBag.RoomTypeName = roomType.RoomTypeName;
-        ViewBag.Capacity = roomType.Capacity;
+        ViewBag.Capacity = roomType.Capacity;   
         ViewBag.PriceDay = roomType.PriceDay;
         ViewBag.RoomNumber = room.RoomNumber;
         ViewBag.Description = room.Description;
 
         // Truyền giá trị RoomId vào BookingDetails action
-        return RedirectToAction("BookingDetails", "Home", new { id = room.RoomId });
+        return RedirectToAction("BookingDetails", "BookingRoom", new { id = room.RoomId });
     }
 
 }

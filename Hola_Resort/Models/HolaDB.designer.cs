@@ -57,12 +57,12 @@ namespace Hola_Resort.Models
     partial void InsertService(Service instance);
     partial void UpdateService(Service instance);
     partial void DeleteService(Service instance);
+    partial void InsertGuestInformation(GuestInformation instance);
+    partial void UpdateGuestInformation(GuestInformation instance);
+    partial void DeleteGuestInformation(GuestInformation instance);
     partial void InsertBooking(Booking instance);
     partial void UpdateBooking(Booking instance);
     partial void DeleteBooking(Booking instance);
-    partial void Insertbookingdetail(bookingdetail instance);
-    partial void Updatebookingdetail(bookingdetail instance);
-    partial void Deletebookingdetail(bookingdetail instance);
     #endregion
 		
 		public HolaDBDataContext(string connection) : 
@@ -70,13 +70,8 @@ namespace Hola_Resort.Models
 		{
 			OnCreated();
 		}
-        public HolaDBDataContext() :
-                base(global::System.Configuration.ConfigurationManager.ConnectionStrings["HolaConnectionString2"].ConnectionString, mappingSource)
-        {
-            OnCreated();
-        }
-
-        public HolaDBDataContext(System.Data.IDbConnection connection) : 
+		
+		public HolaDBDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -93,8 +88,12 @@ namespace Hola_Resort.Models
 		{
 			OnCreated();
 		}
-		
-		public System.Data.Linq.Table<AdminAccount> AdminAccounts
+        public HolaDBDataContext() :
+                base(global::System.Configuration.ConfigurationManager.ConnectionStrings["HolaConnectionString2"].ConnectionString, mappingSource)
+        {
+            OnCreated();
+        }
+        public System.Data.Linq.Table<AdminAccount> AdminAccounts
 		{
 			get
 			{
@@ -166,19 +165,19 @@ namespace Hola_Resort.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<GuestInformation> GuestInformations
+		{
+			get
+			{
+				return this.GetTable<GuestInformation>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Booking> Bookings
 		{
 			get
 			{
 				return this.GetTable<Booking>();
-			}
-		}
-		
-		public System.Data.Linq.Table<bookingdetail> bookingdetails
-		{
-			get
-			{
-				return this.GetTable<bookingdetail>();
 			}
 		}
 	}
@@ -2058,6 +2057,192 @@ namespace Hola_Resort.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GuestInformation")]
+	public partial class GuestInformation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _GuestId;
+		
+		private string _Name;
+		
+		private string _Email;
+		
+		private string _PhoneNumber;
+		
+		private string _NationalId;
+		
+		private EntitySet<Booking> _Bookings;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnGuestIdChanging(int value);
+    partial void OnGuestIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnPhoneNumberChanging(string value);
+    partial void OnPhoneNumberChanged();
+    partial void OnNationalIdChanging(string value);
+    partial void OnNationalIdChanged();
+    #endregion
+		
+		public GuestInformation()
+		{
+			this._Bookings = new EntitySet<Booking>(new Action<Booking>(this.attach_Bookings), new Action<Booking>(this.detach_Bookings));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuestId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int GuestId
+		{
+			get
+			{
+				return this._GuestId;
+			}
+			set
+			{
+				if ((this._GuestId != value))
+				{
+					this.OnGuestIdChanging(value);
+					this.SendPropertyChanging();
+					this._GuestId = value;
+					this.SendPropertyChanged("GuestId");
+					this.OnGuestIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumber", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string PhoneNumber
+		{
+			get
+			{
+				return this._PhoneNumber;
+			}
+			set
+			{
+				if ((this._PhoneNumber != value))
+				{
+					this.OnPhoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNumber = value;
+					this.SendPropertyChanged("PhoneNumber");
+					this.OnPhoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NationalId", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string NationalId
+		{
+			get
+			{
+				return this._NationalId;
+			}
+			set
+			{
+				if ((this._NationalId != value))
+				{
+					this.OnNationalIdChanging(value);
+					this.SendPropertyChanging();
+					this._NationalId = value;
+					this.SendPropertyChanged("NationalId");
+					this.OnNationalIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GuestInformation_Booking", Storage="_Bookings", ThisKey="GuestId", OtherKey="GuestId")]
+		public EntitySet<Booking> Bookings
+		{
+			get
+			{
+				return this._Bookings;
+			}
+			set
+			{
+				this._Bookings.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Bookings(Booking entity)
+		{
+			this.SendPropertyChanging();
+			entity.GuestInformation = this;
+		}
+		
+		private void detach_Bookings(Booking entity)
+		{
+			this.SendPropertyChanging();
+			entity.GuestInformation = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Booking")]
 	public partial class Booking : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2086,9 +2271,11 @@ namespace Hola_Resort.Models
 		
 		private decimal _TotalPrice;
 		
-		private System.Nullable<int> _IdBookingDetail;
+		private System.Nullable<int> _GuestId;
 		
 		private EntitySet<Invoice> _Invoices;
+		
+		private EntityRef<GuestInformation> _GuestInformation;
 		
 		private EntityRef<Customer> _Customer;
 		
@@ -2097,8 +2284,6 @@ namespace Hola_Resort.Models
 		private EntityRef<Room> _Room;
 		
 		private EntityRef<Service> _Service;
-		
-		private EntityRef<bookingdetail> _bookingdetail;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2126,18 +2311,18 @@ namespace Hola_Resort.Models
     partial void OnNumberOfChildrensChanged();
     partial void OnTotalPriceChanging(decimal value);
     partial void OnTotalPriceChanged();
-    partial void OnIdBookingDetailChanging(System.Nullable<int> value);
-    partial void OnIdBookingDetailChanged();
+    partial void OnGuestIdChanging(System.Nullable<int> value);
+    partial void OnGuestIdChanged();
     #endregion
 		
 		public Booking()
 		{
 			this._Invoices = new EntitySet<Invoice>(new Action<Invoice>(this.attach_Invoices), new Action<Invoice>(this.detach_Invoices));
+			this._GuestInformation = default(EntityRef<GuestInformation>);
 			this._Customer = default(EntityRef<Customer>);
 			this._Payment = default(EntityRef<Payment>);
 			this._Room = default(EntityRef<Room>);
 			this._Service = default(EntityRef<Service>);
-			this._bookingdetail = default(EntityRef<bookingdetail>);
 			OnCreated();
 		}
 		
@@ -2377,26 +2562,26 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdBookingDetail", DbType="Int")]
-		public System.Nullable<int> IdBookingDetail
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuestId", DbType="Int")]
+		public System.Nullable<int> GuestId
 		{
 			get
 			{
-				return this._IdBookingDetail;
+				return this._GuestId;
 			}
 			set
 			{
-				if ((this._IdBookingDetail != value))
+				if ((this._GuestId != value))
 				{
-					if (this._bookingdetail.HasLoadedOrAssignedValue)
+					if (this._GuestInformation.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnIdBookingDetailChanging(value);
+					this.OnGuestIdChanging(value);
 					this.SendPropertyChanging();
-					this._IdBookingDetail = value;
-					this.SendPropertyChanged("IdBookingDetail");
-					this.OnIdBookingDetailChanged();
+					this._GuestId = value;
+					this.SendPropertyChanged("GuestId");
+					this.OnGuestIdChanged();
 				}
 			}
 		}
@@ -2411,6 +2596,40 @@ namespace Hola_Resort.Models
 			set
 			{
 				this._Invoices.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GuestInformation_Booking", Storage="_GuestInformation", ThisKey="GuestId", OtherKey="GuestId", IsForeignKey=true)]
+		public GuestInformation GuestInformation
+		{
+			get
+			{
+				return this._GuestInformation.Entity;
+			}
+			set
+			{
+				GuestInformation previousValue = this._GuestInformation.Entity;
+				if (((previousValue != value) 
+							|| (this._GuestInformation.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._GuestInformation.Entity = null;
+						previousValue.Bookings.Remove(this);
+					}
+					this._GuestInformation.Entity = value;
+					if ((value != null))
+					{
+						value.Bookings.Add(this);
+						this._GuestId = value.GuestId;
+					}
+					else
+					{
+						this._GuestId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("GuestInformation");
+				}
 			}
 		}
 		
@@ -2550,40 +2769,6 @@ namespace Hola_Resort.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="bookingdetail_Booking", Storage="_bookingdetail", ThisKey="IdBookingDetail", OtherKey="IdBookingDetail", IsForeignKey=true)]
-		public bookingdetail bookingdetail
-		{
-			get
-			{
-				return this._bookingdetail.Entity;
-			}
-			set
-			{
-				bookingdetail previousValue = this._bookingdetail.Entity;
-				if (((previousValue != value) 
-							|| (this._bookingdetail.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._bookingdetail.Entity = null;
-						previousValue.Bookings.Remove(this);
-					}
-					this._bookingdetail.Entity = value;
-					if ((value != null))
-					{
-						value.Bookings.Add(this);
-						this._IdBookingDetail = value.IdBookingDetail;
-					}
-					else
-					{
-						this._IdBookingDetail = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("bookingdetail");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2614,192 +2799,6 @@ namespace Hola_Resort.Models
 		{
 			this.SendPropertyChanging();
 			entity.Booking = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.bookingdetail")]
-	public partial class bookingdetail : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IdBookingDetail;
-		
-		private string _Name;
-		
-		private string _Email;
-		
-		private string _PhoneNumber;
-		
-		private System.Nullable<long> _NationalId;
-		
-		private EntitySet<Booking> _Bookings;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdBookingDetailChanging(int value);
-    partial void OnIdBookingDetailChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnPhoneNumberChanging(string value);
-    partial void OnPhoneNumberChanged();
-    partial void OnNationalIdChanging(System.Nullable<long> value);
-    partial void OnNationalIdChanged();
-    #endregion
-		
-		public bookingdetail()
-		{
-			this._Bookings = new EntitySet<Booking>(new Action<Booking>(this.attach_Bookings), new Action<Booking>(this.detach_Bookings));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdBookingDetail", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdBookingDetail
-		{
-			get
-			{
-				return this._IdBookingDetail;
-			}
-			set
-			{
-				if ((this._IdBookingDetail != value))
-				{
-					this.OnIdBookingDetailChanging(value);
-					this.SendPropertyChanging();
-					this._IdBookingDetail = value;
-					this.SendPropertyChanged("IdBookingDetail");
-					this.OnIdBookingDetailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumber", DbType="NVarChar(100)")]
-		public string PhoneNumber
-		{
-			get
-			{
-				return this._PhoneNumber;
-			}
-			set
-			{
-				if ((this._PhoneNumber != value))
-				{
-					this.OnPhoneNumberChanging(value);
-					this.SendPropertyChanging();
-					this._PhoneNumber = value;
-					this.SendPropertyChanged("PhoneNumber");
-					this.OnPhoneNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NationalId", DbType="BigInt")]
-		public System.Nullable<long> NationalId
-		{
-			get
-			{
-				return this._NationalId;
-			}
-			set
-			{
-				if ((this._NationalId != value))
-				{
-					this.OnNationalIdChanging(value);
-					this.SendPropertyChanging();
-					this._NationalId = value;
-					this.SendPropertyChanged("NationalId");
-					this.OnNationalIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="bookingdetail_Booking", Storage="_Bookings", ThisKey="IdBookingDetail", OtherKey="IdBookingDetail")]
-		public EntitySet<Booking> Bookings
-		{
-			get
-			{
-				return this._Bookings;
-			}
-			set
-			{
-				this._Bookings.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Bookings(Booking entity)
-		{
-			this.SendPropertyChanging();
-			entity.bookingdetail = this;
-		}
-		
-		private void detach_Bookings(Booking entity)
-		{
-			this.SendPropertyChanging();
-			entity.bookingdetail = null;
 		}
 	}
 }

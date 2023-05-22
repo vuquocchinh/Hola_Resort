@@ -42,6 +42,11 @@
                                                 <div>Bed: @item.Bed</div>
                                                 <div>Price: @item.PriceDay VND</div>
                                                 <div>
+                                                    <div class="row d-inline-block">
+                                                        <a href="@Url.Action("BookingDetails", "BookingRoom", new { id = item.RoomTypeId })" class="col text-decoration-none">
+                                                            
+                                                        </a>
+                                                    </div>
 
                                                 </div>
                                             </div>
