@@ -70,6 +70,11 @@ namespace Hola_Resort.Models
 		{
 			OnCreated();
 		}
+		public HolaDBDataContext() :
+                base(global::System.Configuration.ConfigurationManager.ConnectionStrings["HolaConnectionString1"].ConnectionString, mappingSource)
+        {
+            OnCreated();
+        }
 		
 		public HolaDBDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
@@ -88,12 +93,8 @@ namespace Hola_Resort.Models
 		{
 			OnCreated();
 		}
-        public HolaDBDataContext() :
-                base(global::System.Configuration.ConfigurationManager.ConnectionStrings["HolaConnectionString2"].ConnectionString, mappingSource)
-        {
-            OnCreated();
-        }
-        public System.Data.Linq.Table<AdminAccount> AdminAccounts
+		
+		public System.Data.Linq.Table<AdminAccount> AdminAccounts
 		{
 			get
 			{

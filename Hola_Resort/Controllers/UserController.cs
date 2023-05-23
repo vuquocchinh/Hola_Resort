@@ -5,13 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using Hola_Resort.Models;
 using BCrypt.Net;
-
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using Hola_Resort.ViewModel;
 
 namespace Hola_Resort.Controllers
 {
     public class UserController : Controller
     {
-        HolaDBDataContext data = new HolaDBDataContext();
+        HolaDBDataContext data = new HolaDBDataContext(); 
         // GET: User
         public ActionResult Index()
         {
@@ -67,10 +69,11 @@ namespace Hola_Resort.Controllers
         [HttpPost]
         public ActionResult Login(ViewModel.VMlogin model)
         {
+
             if (ModelState.IsValid)
             {
                 // Kiểm tra xem tên đăng nhập và mật khẩu có tồn tại trong CSDL hay không
-                var customer = data.Customers.Where(x => x.Username == model.Username).FirstOrDefault();
+                var customer = data.Customers.Where(x => x.Username == model.Username /*&& x.Password == model.Password*/).FirstOrDefault();
                 if (customer != null)
                 {
                     if (BCrypt.Net.BCrypt.Verify(model.Password, customer.Password))
@@ -79,6 +82,19 @@ namespace Hola_Resort.Controllers
                         string customerInfo = Newtonsoft.Json.JsonConvert.SerializeObject(customer);
                         Session["CustomerInfo"] = customerInfo;
                         return RedirectToAction("Index", "Home");
+                    }
+                }
+                //kiểm tra đăng nhập Admin
+                var Admin = data.AdminAccounts.Where(x => x.Username == model.Username /*&& x.Password == model.Password*/).FirstOrDefault();
+                if (Admin != null)
+                {
+                    if (BCrypt.Net.BCrypt.Verify(model.Password, Admin.Password))
+                    {
+                        // Lưu thông tin đăng nhập vào Local Storage
+                        string adminInfo = Newtonsoft.Json.JsonConvert.SerializeObject(Admin);
+                        Session["adminInfo "] = adminInfo;
+                        return RedirectToAction("Index", "ADhome", new { area = "Admin" });
+
                     }
                 }
                 ModelState.AddModelError("", "Incorrect username or password!");
