@@ -49,17 +49,15 @@
               columns: new[]  // colums in grid
               {
 
-                grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+                grid.Column("Mã nhân viên",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
                 grid.Column("FullName","Nhân viên"),
                 grid.Column("Username","Tài khoản"),
                 grid.Column("Password","Mật khẩu"),
 
-                grid.Column("Email","Email"),
+                
                 
 
                 grid.Column("Chức năng", format: @<text>
-    <a href="@Url.Action("Edit",
-                        new { id = item.AdminId})" class="edit-btn"><abbr title="Cập nhật"><img src="/Assets/ad/img/edit.png" width="20" height="20" /></abbr></a>
     <a href="@Url.Action("Delete",
                         new { id = item.AdminId})" class="edit-btn">
         <abbr title="Xóa">

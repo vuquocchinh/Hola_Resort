@@ -81,5 +81,30 @@ namespace Hola_Resort.Areas.Admin.Controllers
             }
             return View(u);
         }
+        public ActionResult Search(string roomTypeId, string roomTypeName)
+        {
+            var roomtype = SearchRoomtypes(roomTypeId, roomTypeName);
+            return View("Search", roomtype);
+        }
+        public List<RoomType> SearchRoomtypes(string roomTypeId, string roomTypeName)
+        {
+            using (var dbContext = new HolaDBDataContext())
+            {
+                var query = dbContext.RoomTypes.AsQueryable();
+
+                if (!string.IsNullOrEmpty(roomTypeId))
+                {
+                    query = query.Where(c => c.RoomTypeId.Contains(roomTypeId));
+                }
+
+                if (!string.IsNullOrEmpty(roomTypeName))
+                {
+                    query = query.Where(c => c.RoomTypeName.Contains(roomTypeName));
+                }               
+
+                var results = query.ToList();
+                return results;
+            }
+        }
     }
 }

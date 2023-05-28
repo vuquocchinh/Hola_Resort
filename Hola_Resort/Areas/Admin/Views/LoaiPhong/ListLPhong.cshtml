@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Hola_Resort.Models.RoomType>
 
 @{
-    ViewBag.Title = "ListLoaiPhong";
+    ViewBag.Title = "Danh sách loại phòng";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var grid = new WebGrid(Model, canPage: true, defaultSort: "RoomTypeId", rowsPerPage: 5);
 }
@@ -55,7 +55,9 @@
                 grid.Column("RoomTypeId","Mã loại phòng"),
                 grid.Column("RoomTypeName","Tên loại phòng"),
                 grid.Column("Capacity", "Sức chứa"),
+                grid.Column("Image", "Hình ảnh"),
                 grid.Column("PriceDay", "Giá tiền"),
+                grid.Column("Bed", "Giường"),
 
                 grid.Column("Chức năng", format: @<text>
     <a href="@Url.Action("Edit",

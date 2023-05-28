@@ -1,0 +1,69 @@
+﻿@model  List<Hola_Resort.Models.Room>
+
+@{
+    ViewBag.Title = "Kiểm tra phòng trống";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "RoomId", rowsPerPage: 5);
+}
+
+<html>
+<head>
+    <style type="text/css">
+        .grid-footer {
+            color: #000;
+            font: 17px Calibri;
+            text-align: center;
+            font-weight: bold;
+        }
+
+            .grid-footer a {
+                background-color: #ffffff;
+                color: blue;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                padding: 1px 10px 2px 10px;
+            }
+
+                .grid-footer a:active, a:hover {
+                    background-color: #ffffff;
+                    color: #FFAD33;
+                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                }
+
+        .alternatingRowStyle {
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+</html>
+<h2>KIỂM TRA PHÒNG TRỐNG</h2>
+
+@using (Html.BeginForm("CheckRoom", "Check", FormMethod.Get))
+{
+    <div class="form-group">
+        <label for="roomStatus">Trạng thái phòng:</label>
+        @Html.DropDownList("RoomStatus", new SelectList(new[]
+        {
+            new SelectListItem { Text = "Tất cả", Value = null },
+            new SelectListItem { Text = "Đang trống", Value = "true" },
+            new SelectListItem { Text = "Đã đặt", Value = "false" }
+        }, "Value", "Text"), new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+}
+<div id="gridContent">
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-hover",
+        footerStyle: "grid-footer",
+        fillEmptyRows: true,
+        mode: WebGridPagerModes.Numeric,
+        alternatingRowStyle: "alternatingRowStyle",
+          columns: new[]  // colums in grid
+          {
+
+            grid.Column("RoomId","Mã phòng"),
+            grid.Column("RoomNumber","Số phòng"),
+            grid.Column("RoomTypeId","Mã loại phòng"),
+            grid.Column("RoomStatus", "Trạng thái"),
+          })
+</div>

@@ -37,9 +37,7 @@
 <body>
     <h3>DANH SÁCH PHÒNG ĐÃ ĐẶT</h3>
     
-    <p>
-        @Html.ActionLink("Tìm kiếm", "Search")
-    </p>
+    
     <div id="gridContent">
         @grid.GetHtml(
             tableStyle: "table table-bordered table-hover",
@@ -51,22 +49,19 @@
               {
 
                 grid.Column("BookingId","Mã đặt phòng"),
-                grid.Column("CustomerId","Mã khách hàng"),
+                grid.Column("GuestId","Mã khách hàng"),
 
                 grid.Column("RoomId", "Mã phòng"),
                 grid.Column("CheckInDate", "Ngày nhận"),
                 grid.Column("CheckOutDate", "Ngày trả"),
-                grid.Column("NumberOfRooms", "Số phòng"),
-                grid.Column("ServiceId", "Mã dịch vụ"),
-                grid.Column("PaymentId", "Mã thanh toán"),
+               
                 grid.Column("NumberOfAdults", "Người lớn"),
                 grid.Column("NumberOfChildrens", "Trẻ em"),
                 grid.Column("TotalPrice", "Tổng cộng"),
                 grid.Column("Chức năng", format: @<text>
-    <a href="@Url.Action("Edit",
-                        new { id = item.BookingId})" class="edit-btn"><abbr title="Cập nhật"><img src="/Assets/ad/img/edit.png" width="20" height="20" /></abbr></a>
+    
     <a href="@Url.Action("Detail",
-                        new { id = item.BookingId})" class="edit-btn"><abbr title="Xem chi tiết"><img src="/Assets/ad/img/details.png" width="20" height="20" /></abbr></a>
+                        new { id = item.GuestId})" class="edit-btn"><abbr title="Xem chi tiết"><img src="/Assets/ad/img/details.png" width="20" height="20" /></abbr></a>
     <a href="@Url.Action("Delete",
                         new { id = item.BookingId})" class="edit-btn">
         <abbr title="Xóa">

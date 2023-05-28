@@ -1,0 +1,31 @@
+﻿@model Hola_Resort.Models.GuestInformation
+
+@{
+    ViewBag.Title = "Xóa thông tin khách";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<h2 style="text-align:center">XÓA THÔNG TIN KHÁCH VÃNG LAI</h2> 
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+        <dt>Email</dt>
+        <dd>@Html.DisplayFor(model => model.Email)</dd>
+        <dt>Phone Number</dt>
+        <dd>@Html.DisplayFor(model => model.PhoneNumber)</dd>
+        <dt>CCCD/Passport</dt>
+        <dd>@Html.DisplayFor(model => model.NationalId)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <button type="button" class="btn btn-danger" id="deleteButton">Delete</button>
+        @Html.ActionLink("Cancel", "ListGuest", null, new { @class = "btn btn-default" })
+    }
+
+    

@@ -1,11 +1,12 @@
 ﻿@model Hola_Resort.Models.RoomType
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Chi tiết loại phòng";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>CHI TIẾT LOẠI PHÒNG</h2>
+<img src="@Model.Image"
 
 <div>
 
@@ -33,6 +34,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt>
+            Giường
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bed)
         </dd>
 
         <dt>

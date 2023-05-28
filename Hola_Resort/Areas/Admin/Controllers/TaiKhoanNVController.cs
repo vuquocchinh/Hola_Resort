@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,42 +17,20 @@ namespace Hola_Resort.Areas.Admin.Controllers
             var all_AdminAccount = from s in data.AdminAccounts select s;
             return View(all_AdminAccount);
         }
-        [HttpGet]
-        public ActionResult Edit(int id)
-        {
-            var u = data.AdminAccounts.First(m => m.AdminId == id);
-            return View(u);
-        }
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            var u = data.Customers.First(m => m.CustomerId == id);
-            var ten = collection["FullName"];
-            var email = collection["Email"];
-            var phone = collection["PhoneNumber"];
-            var address = collection["Address"];
-            u.CustomerId = id;
-            u.FullName = ten;
-            u.Email = email;
-            u.PhoneNumber = phone;
-            u.Address = address;
-            UpdateModel(u);
-            data.SubmitChanges();
-            return RedirectToAction("ListUser");
-        }
+        
 
         public ActionResult Delete(int id)
         {
-            var u = data.Customers.First(m => m.CustomerId == id);
-            return View(u);
+            var D_admin = data.AdminAccounts.First(m => m.AdminId == id);
+            return View(D_admin);
         }
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            var u = data.Customers.Where(m => m.CustomerId == id).First();
-            UpdateModel(u);
+            var D_admin = data.AdminAccounts.Where(m => m.AdminId == id).First();
+            data.AdminAccounts.DeleteOnSubmit(D_admin);
             data.SubmitChanges();
-            return RedirectToAction("ListUser");
+            return RedirectToAction("ListTK");
         }
 
         [HttpGet]
@@ -60,23 +39,20 @@ namespace Hola_Resort.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(FormCollection collection, Customer u)
+        public ActionResult Create(FormCollection collection, AdminAccount u)
         {
-            var ten = collection["FullName"];
+            var manhanvien = collection["AdminId"];
+            var tentaikhoan = collection["Username"];
+            var matkhau = collection["Password"];
             var email = collection["Email"];
-            var phone = collection["PhoneNumber"];
-            var address = collection["Address"];
-            var password = collection["PasswordUser"];
-            var gioitinh = collection["Gender"];
-            u.FullName = ten;
+            var tennhanvien = collection["FullName"];
+            u.Username = tentaikhoan;
+            u.Password = matkhau;
             u.Email = email;
-            u.PhoneNumber = phone;
-            u.Address = address;
-            u.Password = password;
-            u.Gender = gioitinh;
-            data.Customers.InsertOnSubmit(u);
+            u.FullName = tennhanvien;
+            data.AdminAccounts.InsertOnSubmit(u);
             data.SubmitChanges();
-            return RedirectToAction("ListUser");
+            return RedirectToAction("ListTK");
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Hola_Resort.Models.Service>
 
 @{
-    ViewBag.Title = "ListDV";
+    ViewBag.Title = "Danh sách dịch vụ";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var grid = new WebGrid(Model, canPage: true, defaultSort: "ServiceId", rowsPerPage: 5);
 }
@@ -39,9 +39,7 @@
     <p>
         @Html.ActionLink("Thêm dịch vụ", "Create")
     </p>
-    <p>
-        @Html.ActionLink("Tìm kiếm", "Search")
-    </p>
+    
     <div id="gridContent">
         @grid.GetHtml(
             tableStyle: "table table-bordered table-hover",

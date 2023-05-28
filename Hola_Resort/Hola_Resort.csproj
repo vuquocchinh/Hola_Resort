@@ -215,9 +215,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ADhomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CheckController.cs" />
     <Compile Include="Areas\Admin\Controllers\DichvuController.cs" />
     <Compile Include="Areas\Admin\Controllers\DiscountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GuestController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InfoNVController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiPhongController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhanHoiController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLyBookingController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLyUserController.cs" />
@@ -2310,7 +2314,6 @@
     <Content Include="Areas\Admin\Views\QLyUser\ListUser.cshtml" />
     <Content Include="Areas\Admin\Views\QLyUser\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\QLyUser\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\QLyUser\Create.cshtml" />
     <Content Include="Areas\Admin\Views\QLyUser\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Phong\ListPhong.cshtml" />
     <Content Include="Areas\Admin\Views\Phong\Edit.cshtml" />
@@ -2342,6 +2345,26 @@
     <Content Include="Areas\Admin\Views\LoaiPhong\ListLPhong.cshtml" />
     <Content Include="Areas\Admin\Views\QLyBooking\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoanNV\ListTK.cshtml" />
+    <Content Include="Areas\Admin\Views\QLyBooking\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\InfoNV\InfoNV.cshtml" />
+    <Content Include="Areas\Admin\Views\InfoNV\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QLyBooking\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\InfoNV\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\InfoNV\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoanNV\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoanNV\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanHoi\Review.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanHoi\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanHoi\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Guest\ListGuest.cshtml" />
+    <Content Include="Areas\Admin\Views\Guest\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Guest\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Guest\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\QLyUser\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Guest\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Phong\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiPhong\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Check\CheckRoom.cshtml" />
     <None Include="Models\HolaDB.dbml.layout">
       <DependentUpon>HolaDB.dbml</DependentUpon>
     </None>
@@ -2373,7 +2396,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\RoomType\Index.cshtml" />
     <Content Include="Views\Room\Room.cshtml" />
-    <Content Include="Views\Room\Details.cshtml" />
+    <Content Include="Views\Room\RoomDetails.cshtml" />
     <Content Include="Views\BookingRoom\BookingDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>

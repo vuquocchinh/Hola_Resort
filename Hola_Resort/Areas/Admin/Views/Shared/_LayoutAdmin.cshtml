@@ -94,13 +94,13 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="@Url.Action("Index", "QLyBooking")">Quản lý đặt phòng</a>
-                        
+
                         <a class="collapse-item" href="@Url.Action("ListHD", "HoaDon")">Hóa đơn</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="tabA" href="@Url.Action("Index", "KiemTraPhongTrong")">
+                <a class="tabA" href="@Url.Action("CheckRoom", "Check")">
                     <span class="nav-link">
                         <i class="fas fa-calendar-check"></i>
                         <span>Kiểm tra phòng trống</span>
@@ -119,13 +119,21 @@
             <!-- Nav Item - Thông tin khách hàng -->
 
             <li class="nav-item">
-                <a class="tabA" href="@Url.Action("ListUser", "QLyUser")">
+                <a class="tabA collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomer"
+                   aria-expanded="true" aria-controls="collapseCustomer">
                     <span class="nav-link">
-                        <i class="fa fa-address-book"></i>
+                        <i class="fas fa-fw fa-users"></i>
                         <span>Thông tin khách hàng</span>
                     </span>
                 </a>
+                <div id="collapseCustomer" class="collapse" aria-labelledby="headingCustomer" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("ListUser", "QLyUser")">Khách hàng</a>
+                        <a class="collapse-item" href="@Url.Action("ListGuest", "Guest")">Khách vãng lai</a>
+                    </div>
+                </div>
             </li>
+
 
             <!-- Nav Item - Liên hệ -->
             <li class="nav-item">
@@ -140,7 +148,7 @@
 
             <!-- Nav Item -  Phản hồi-->
             <li class="nav-item">
-                <a class="tabA" href="@Url.Action("Index", "PhanHois")">
+                <a class="tabA" href="@Url.Action("Review", "PhanHoi")">
                     <span class="nav-link">
                         <i class="fa fa-comments"></i>
                         <span>Phản hồi</span>
@@ -158,7 +166,7 @@
 
             <!-- Nav Item - Thông tin nhân viên -->
             <li class="nav-item">
-                <a class="tabA" href="@Url.Action("Index", "NhanViens")">
+                <a class="tabA" href="@Url.Action("InfoNV", "InfoNV")">
                     <span class="nav-link">
                         <i class="fa fa-users"></i>
                         <span>Thông tin nhân viên</span>
@@ -176,17 +184,9 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Nhóm nhân viên -->
-            <li class="nav-item">
-                <a class="tabA" href="@Url.Action("Index", "NhomNhanViens")">
-                    <span class="nav-link">
-                        <i class="fa fa-users"></i>
-                        <span>Nhóm nhân viên</span>
-                    </span>
-                </a>
-            </li>
 
-            
+
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

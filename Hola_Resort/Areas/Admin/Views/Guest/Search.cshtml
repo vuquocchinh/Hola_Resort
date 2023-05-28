@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "GuestId", rowsPerPage: 5);
+}
+
+<html>
+<head>
+    <style type="text/css">
+        .grid-footer {
+            color: #000;
+            font: 17px Calibri;
+            text-align: center;
+            font-weight: bold;
+        }
+
+            .grid-footer a {
+                background-color: #ffffff;
+                color: blue;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                padding: 1px 10px 2px 10px;
+            }
+
+                .grid-footer a:active, a:hover {
+                    background-color: #ffffff;
+                    color: #FFAD33;
+                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                }
+
+        .alternatingRowStyle {
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h3>TÌM KIẾM THÔNG TIN KHÁCH HÀNG</h3>
+    <hr />
+    <div>
+        @using (Html.BeginForm("Search", "Guest", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+
+
+        <table class="table1" align="center">
+
+            <tr>
+                <td>Tên khách hàng </td>
+                <td>
+                    <input type="text" name="Name" value="@ViewBag.Name" class="form-control" />
+                </td>
+
+            </tr>       
+            <tr>
+                <td>Số điện thoại </td>
+                <td>
+                    <input type="text" name="PhoneNumber" value="@ViewBag.PhoneNumber" class="form-control" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>CCCD/Hộ chiếu </td>
+                <td>
+                    <input type="text" name="NationalId" value="@ViewBag.NationalId" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:100px;
+                background-color: blue;color:white" />
+                    <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px;width:100px;
+                background-color: blue;color:white" onclick="location.href='@Url.Action("Search", "Guest")'" />
+
+                </td>
+            </tr>
+            <tr>
+                <td><br /></td>
+            </tr>
+        </table>
+        }
+    </div>
+    <div id="gridContent">
+        @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "alternatingRowStyle",
+              columns: new[]  // colums in grid
+              {
+                grid.Column("GuestId","Mã khách hàng",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+
+                grid.Column("Name","Tên khách hàng"),             
+                grid.Column("Email","Email"),
+                grid.Column("PhoneNumber","Số điện thoại"),
+                grid.Column("NationalId", "CCCD/Hộ chiếu"),
+                grid.Column("Chức năng", format: @<text>
+    <a href="@Url.Action("Edit",
+                        new { id = item.GuestId})" class="edit-btn"><abbr title="Cập nhật"><img src="/Assets/ad/img/edit.png" width="20" height="20" /></abbr></a>
+    <a href="@Url.Action("Detail",
+                        new { id = item.GuestId})" class="edit-btn"><abbr title="Xem chi tiết"><img src="/Assets/ad/img/details.png" width="20" height="20" /></abbr></a>
+    <a href="@Url.Action("Delete",
+                        new { id = item.GuestId})" class="edit-btn">
+        <abbr title="Xóa">
+            <img src="/Assets/ad/img/delete.png" width="20" height="20" />
+        </abbr>
+    </a>
+                </text>)
+}
+)
+    </div>
+</body>
+<div>
+    @Html.ActionLink("Back to List", "ListGuest")
+</div>
+</html>

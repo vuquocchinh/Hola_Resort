@@ -44,15 +44,14 @@ namespace Hola_Resort.Areas.Admin.Controllers
 
         public ActionResult Delete(string id)
         {
-            var u = data.Rooms.First(m => m.RoomId == id);
-            return View(u);
+            var D_Room = data.Rooms.First(m => m.RoomId == id);
+            return View(D_Room);
         }
         [HttpPost]
         public ActionResult Delete(string id, FormCollection collection)
         {
-            var u = data.Rooms.Where(m => m.RoomId == id).First();
-
-            UpdateModel(u);
+            var D_Room = data.Rooms.Where(m => m.RoomId == id).First();
+            data.Rooms.DeleteOnSubmit(D_Room);
             data.SubmitChanges();
             return RedirectToAction("ListPhong");
         }
@@ -91,5 +90,42 @@ namespace Hola_Resort.Areas.Admin.Controllers
             }
             return View(u);
         }
+
+        public ActionResult Search(string roomId, string roomNumber, string roomTypeId, string description)
+        {
+            var room = SearchRooms(roomId, roomNumber, roomTypeId,  description);
+            return View("Search", room);
+        }
+        public List<Room> SearchRooms(string roomId, string roomNumber, string roomTypeId, string description)
+        {
+            using (var dbContext = new HolaDBDataContext())
+            {
+                var query = dbContext.Rooms.AsQueryable();
+
+                if (!string.IsNullOrEmpty(roomId))
+                {
+                    query = query.Where(c => c.RoomId.Contains(roomId));
+                }
+
+                if (!string.IsNullOrEmpty(roomNumber))
+                {
+                    query = query.Where(c => c.RoomNumber.Contains(roomNumber));
+                }
+
+                if (!string.IsNullOrEmpty(roomTypeId))
+                {
+                    query = query.Where(c => c.RoomTypeId.Contains(roomTypeId));
+                }              
+
+                if (!string.IsNullOrEmpty(description))
+                {
+                    query = query.Where(c => c.Description.Contains(description));
+                }
+
+                var results = query.ToList();
+                return results;
+            }
+        }
+
     }
 }
